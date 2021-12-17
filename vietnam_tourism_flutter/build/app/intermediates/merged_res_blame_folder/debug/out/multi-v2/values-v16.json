@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\Hoc_tap\\Hoc_Tap_Nam_3_HK1\\LapTrinhDiDong\\DoAn\\vietnam_tourism\\vietnam_tourism_flutter\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Khang\\.gradle\\caches\\transforms-2\\files-2.1\\8303770383d3c9b10591bdbd17d32eb5\\core-1.1.0\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\Hoc_tap\\Hoc_Tap_Nam_3_HK1\\LapTrinhDiDong\\DoAn\\vietnam_tourism\\vietnam_tourism_flutter\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ur\\values-ur.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Khang\\.gradle\\caches\\transforms-2\\files-2.1\\8303770383d3c9b10591bdbd17d32eb5\\core-1.1.0\\res\\values-ur\\values-ur.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "316",
+                        "endColumns": "100",
+                        "endOffsets": "412"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Khang\\.gradle\\caches\\transforms-2\\files-2.1\\538155ce0919f8c8d51ab74c69677a46\\jetified-play-services-basement-17.0.0\\res\\values-ur\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "210",
+                        "endOffsets": "457"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "105",
+                        "endColumns": "210",
+                        "endOffsets": "311"
+                    }
+                }
+            ]
+        }
+    ]
+}
