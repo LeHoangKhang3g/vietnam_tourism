@@ -27,7 +27,7 @@ class _PlacePostState extends State<PlacePost>{
               child: Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(1),
+                    padding: const EdgeInsets.fromLTRB(10 ,0 , 10 , 0),
                     child:  Text(
                       widget.place.name,
                       ),
@@ -67,8 +67,10 @@ class _PlacePostState extends State<PlacePost>{
               "images/"+widget.place.imageName,
               fit:BoxFit.cover,
             ),
+            
           ],
         ),
+        
       );
     }
 
