@@ -30,7 +30,11 @@ class _PlacePostState extends State<PlacePost>{
                     padding: const EdgeInsets.fromLTRB(10 ,0 , 10 , 0),
                     child:  Text(
                       widget.place.name,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
+                    ),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,13 +43,13 @@ class _PlacePostState extends State<PlacePost>{
                        widget.place.area,
                         style: const TextStyle(
                           fontSize: 15,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.normal,
                         ),
                       ),
                       Text(
                         widget.place.region,
                         style: const TextStyle(
-                          fontSize: 12,
+                          fontSize: 15,
                           fontWeight: FontWeight.normal,
                         ),
                       ),
@@ -67,7 +71,38 @@ class _PlacePostState extends State<PlacePost>{
               "images/"+widget.place.imageName,
               fit:BoxFit.cover,
             ),
-            
+            Row(
+              children: [
+                IconButton(
+                  onPressed: (){},
+                  icon: const Icon(
+                    Icons.thumb_up_alt,
+                    color: Colors.blue,
+                  ),
+                ),
+                IconButton(
+                  onPressed: (){},
+                  icon: const Icon(
+                    Icons.thumb_down_alt,
+                    color: Colors.grey,
+                  ),
+                ),
+                IconButton(
+                  onPressed: (){},
+                  icon: const Icon(
+                    Icons.comment,
+                    color: Colors.grey,
+                  ),
+                ),
+                IconButton(
+                  onPressed: (){},
+                  icon: const Icon(
+                    Icons.share,
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            )
           ],
         ),
         

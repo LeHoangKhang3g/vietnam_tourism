@@ -12,5 +12,5 @@ class Account {
   
   List<Post> posts = [];
     
-  
+  Account(this.imageName, this.name);
 }
