@@ -4,6 +4,7 @@ class Post{
   int ownerId=0;
   int placeId=0;
   DateTime time=DateTime.now();
+  String content="";
   String imageName="";
 
   //Save accountId liked, disliked comment 
@@ -12,5 +13,5 @@ class Post{
 
   List<Comment> comments = [];
  
-  Post(this.id, this.ownerId, this.placeId, this.time, this.imageName);
+  Post(this.id, this.ownerId, this.placeId, this.content, this.imageName);
 }

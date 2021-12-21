@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vietnam_tourism_flutter/login/login.dart';
 import 'places/place.dart';
 import 'places/list_place.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const PlaceScreen(),
+      home: const Login(),
     );
   }
 }
