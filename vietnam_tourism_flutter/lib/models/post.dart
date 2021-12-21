@@ -2,10 +2,8 @@ import 'package:vietnam_tourism_flutter/models/comment.dart';
 class Post{ 
   int id=0;
   int ownerId=0;
-  String name="";
-  String area="";   //miền 
-  String region=""; //khu vực
-  String description=""; //Mô tả
+  int placeId=0;
+  DateTime time=DateTime.now();
   String imageName="";
 
   //Save accountId liked, disliked comment 
@@ -14,5 +12,5 @@ class Post{
 
   List<Comment> comments = [];
  
-
+  Post(this.id, this.ownerId, this.placeId, this.time, this.imageName);
 }

@@ -17,6 +17,6 @@ class Place{
   //Save postId share this place
   List<int> shareIds = [];
 
-  Place(String s, String t, String u, String v, String w);
+  Place(this.name, this.area, this.region, this.description, this.imageName);
 
 }
