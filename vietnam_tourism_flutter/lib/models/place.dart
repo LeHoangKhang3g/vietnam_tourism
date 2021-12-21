@@ -8,6 +8,7 @@ class Place{
   String description=""; //Mô tả
   String imageName="";
 
+
   //Save accountId liked, disliked comment 
   List<int> likeds = [];
   List<int> dislikeds = [];
@@ -15,5 +16,7 @@ class Place{
   List<Comment> comments = [];
   //Save postId share this place
   List<int> shareIds = [];
+
+  Place(String s, String t, String u, String v, String w);
 
 }
