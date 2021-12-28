@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../posts/post.dart';
+import '../models/post.dart';
 
 class Profile extends StatefulWidget{
   const Profile({Key?key}):super(key: key);
@@ -8,8 +10,11 @@ class Profile extends StatefulWidget{
 }
 
 class ProfileState extends State<Profile>{
-  
-  
+  List<Post> posts = [
+  Post(2,3,1,"Cổ kính, hoài niệm","place2.jpg"),
+  Post(3,3,2,"Nước biển trong xanh, cảnh đẹp.","place3.jpg"),
+  ];
+
   @override 
   Widget build(BuildContext context){
     double widthScreen=MediaQuery.of(context).size.width;
@@ -72,7 +77,8 @@ class ProfileState extends State<Profile>{
                 )
               ],
             ),
-          )
+          ),
+          ...posts.map((post) => PostShare(post: post)),
         ],
       ),
     );
