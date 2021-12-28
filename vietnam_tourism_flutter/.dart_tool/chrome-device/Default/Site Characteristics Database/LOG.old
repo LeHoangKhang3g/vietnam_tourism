@@ -1,10 +1,13 @@
-2021/12/21-21:57:17.320 25ac Log #3: 2 ops saved to Table #7 OK
-2021/12/21-21:57:17.347 25ac Archiving C:\Users\Khang\AppData\Local\Temp\flutter_tools.59febbbb\flutter_tools_chrome_device.47995145\Default\Site Characteristics Database/000003.log: OK
-2021/12/21-21:57:17.356 25ac Log #6: 1 ops saved to Table #8 OK
-2021/12/21-21:57:17.358 25ac Archiving C:\Users\Khang\AppData\Local\Temp\flutter_tools.59febbbb\flutter_tools_chrome_device.47995145\Default\Site Characteristics Database/000006.log: OK
-2021/12/21-21:57:17.358 25ac Table #4: 2 entries OK
-2021/12/21-21:57:17.358 25ac Table #6: 2 entries OK
-2021/12/21-21:57:17.358 25ac Table #7: 2 entries OK
-2021/12/21-21:57:17.358 25ac Table #8: 1 entries OK
-2021/12/21-21:57:17.369 25ac Archiving C:\Users\Khang\AppData\Local\Temp\flutter_tools.59febbbb\flutter_tools_chrome_device.47995145\Default\Site Characteristics Database/MANIFEST-000001: OK
-2021/12/21-21:57:17.382 25ac **** Repaired leveldb C:\Users\Khang\AppData\Local\Temp\flutter_tools.59febbbb\flutter_tools_chrome_device.47995145\Default\Site Characteristics Database; recovered 4 files; 747 bytes. Some data may have been lost. ****
+2021/12/28-13:27:57.664 3494 Reusing MANIFEST C:\Users\Khang\AppData\Local\Temp\flutter_tools.ef9d4f9c\flutter_tools_chrome_device.81317370\Default\Site Characteristics Database/MANIFEST-000001
+2021/12/28-13:27:57.665 3494 Recovering log #3
+2021/12/28-13:27:57.665 3494 Level-0 table #13: started
+2021/12/28-13:27:57.669 3494 Level-0 table #13: 194 bytes OK
+2021/12/28-13:27:57.669 3494 Recovering log #6
+2021/12/28-13:27:57.669 3494 Level-0 table #14: started
+2021/12/28-13:27:57.672 3494 Level-0 table #14: 165 bytes OK
+2021/12/28-13:27:57.672 3494 Recovering log #10
+2021/12/28-13:27:57.673 3494 Reusing old log C:\Users\Khang\AppData\Local\Temp\flutter_tools.ef9d4f9c\flutter_tools_chrome_device.81317370\Default\Site Characteristics Database/000010.log 
+2021/12/28-13:27:57.676 3494 Delete type=0 #3
+2021/12/28-13:27:57.676 3494 Delete type=2 #4
+2021/12/28-13:27:57.676 3494 Delete type=2 #6
+2021/12/28-13:27:57.676 3494 Delete type=0 #6

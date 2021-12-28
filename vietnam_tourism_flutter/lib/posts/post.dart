@@ -12,15 +12,17 @@ class PostShare extends StatefulWidget {
     Account("avatar1.jpg","Khang"),
     Account("avatar2.jpg","Trung"),
     Account("avatar3.jpg","Oanh"),
-    Account("avatar4.jpg","Khangg"),
+    Account("avatar4.jpg","Hoàng Khang"),
     Account("avatar5.jpg","Trungg"),
   ];
     List<Place> places = [
     Place("Nha Trang","Miền Trung", "Biển" , "Khám phá ngay trung tâm thành phố Nha Trang có gì chơi" , "place1.jpg"),
     Place("Thừa Thiên Huế","Miền Trung","Núi","phong cách đẹp" , "place2.jpg"),
     Place("Vịnh Hạ Long" , "Miền Bắc" , "Vịnh", "Phong cách đẹp" , "place3.jpg"),
-
   ];
+
+  bool like = false;
+  bool unlike=false;
 }
 
 class _PostShareState extends State<PostShare>{
@@ -104,21 +106,35 @@ class _PostShareState extends State<PostShare>{
           Row(
             children: [
               IconButton(
-                onPressed: (){},
-                icon: const Icon(
+                onPressed: (){
+                  setState(() {
+                    widget.like = widget.like?false:true;
+                    if(widget.like==true&&widget.unlike==true)
+                      widget.unlike=false;
+                  });
+                },
+                icon: Icon(
                   Icons.thumb_up_alt,
-                  color: Colors.blue,
+                  color: widget.like?Colors.blue:Colors.grey,
                 ),
               ),
               IconButton(
-                onPressed: (){},
-                icon: const Icon(
+                onPressed: (){
+                  setState(() {
+                    widget.unlike = widget.unlike?false:true;
+                    if(widget.like==true&&widget.unlike==true)
+                      widget.like=false;                    
+                  });
+                },
+                icon: Icon(
                   Icons.thumb_down_alt,
-                  color: Colors.grey,
+                  color: widget.unlike?Colors.blue: Colors.grey,
                 ),
               ),
               IconButton(
-                onPressed: (){},
+                onPressed: (){
+                  //showModalBottomSheet
+                },
                 icon: const Icon(
                   Icons.comment,
                   color: Colors.grey,
