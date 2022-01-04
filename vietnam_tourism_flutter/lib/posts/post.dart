@@ -9,16 +9,16 @@ class PostShare extends StatefulWidget {
   _PostShareState createState() => _PostShareState();
   Post post;
   List<Account> accounts =[
-    Account("avatar1.jpg","Khang"),
-    Account("avatar2.jpg","Trung"),
-    Account("avatar3.jpg","Oanh"),
-    Account("avatar4.jpg","Hoàng Khang"),
-    Account("avatar5.jpg","Trungg"),
+    Account(1,"khang1","pass1","Khang",DateTime(2001,5,4),"khang1@gmail.com","avatar1.jpg","Background1.jpg",[]),
+    Account(2,"trung2","pass2","Trung",DateTime(2001,5,5),"trung2@gmail.com","avatar2.jpg","Background1.jpg",[]),
+    Account(3,"oanh3","pass3","Oanh",DateTime(2001,5,6),"oanh3@gmail.com","avatar3.jpg","Background1.jpg",[]),
+    Account(4,"khang4","pass4","Hoàng Khang",DateTime(2001,5,7),"khang4@gmail.com","avatar4.jpg","Background1.jpg",[]),
+    Account(5,"trung5","pass5","Trungg",DateTime(2001,5,8),"trung5@gmail.com","avatar5.jpg","Background1.jpg",[]),
   ];
     List<Place> places = [
-    Place("Nha Trang","Miền Trung", "Biển" , "Khám phá ngay trung tâm thành phố Nha Trang có gì chơi" , "place1.jpg"),
-    Place("Thừa Thiên Huế","Miền Trung","Núi","phong cách đẹp" , "place2.jpg"),
-    Place("Vịnh Hạ Long" , "Miền Bắc" , "Vịnh", "Phong cách đẹp" , "place3.jpg"),
+    Place(1,"Nha Trang","Miền Trung", "Khu Vực Trung Bộ" , "Khám phá ngay trung tâm thành phố Nha Trang có gì chơi:  " , "place1.jpg",[],[],[],[]),
+    Place(2,"Thừa Thiên Huế","Miền Trung","Khu Vực Trung Bộ","kiến trúc thời phong kiến , phong cảnh phong tục văn hóa dân tộc việt nam" , "place2.jpg",[],[],[],[]),
+    Place(3,"Vịnh Hạ Long" , "Miền Bắc" , "Khu Vực Bắc Bộ", "Có Nhiều bãi đẹp , phong phú về địa hình , các hòn đảo , đá san hô" , "place3.jpg",[],[],[],[]),
   ];
 
   bool like = false;

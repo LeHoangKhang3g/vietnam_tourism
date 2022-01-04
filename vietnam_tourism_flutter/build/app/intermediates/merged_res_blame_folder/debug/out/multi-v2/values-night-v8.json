@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\DoAnFlutter\\vietnam_tourism\\vietnam_tourism_flutter\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "D:\\Hoc_tap\\Hoc_Tap_Nam_3_HK1\\LapTrinhDiDong\\DoAn\\vietnam_tourism\\vietnam_tourism_flutter\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "D:\\DoAnFlutter\\vietnam_tourism\\vietnam_tourism_flutter\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "D:\\Hoc_tap\\Hoc_Tap_Nam_3_HK1\\LapTrinhDiDong\\DoAn\\vietnam_tourism\\vietnam_tourism_flutter\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

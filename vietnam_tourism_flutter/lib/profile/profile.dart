@@ -11,8 +11,8 @@ class Profile extends StatefulWidget{
 
 class ProfileState extends State<Profile>{
   List<Post> posts = [
-  Post(2,3,1,"Cổ kính, hoài niệm","place2.jpg"),
-  Post(3,3,2,"Nước biển trong xanh, cảnh đẹp.","place3.jpg"),
+    Post(2,1,1,DateTime.now(),"Cổ kính, hoài niệm","place2.jpg",[],[],[]),
+    Post(3,2,2,DateTime.now(),"Nước biển trong xanh, cảnh đẹp.","place3.jpg",[],[],[]),
   ];
 
   @override 
