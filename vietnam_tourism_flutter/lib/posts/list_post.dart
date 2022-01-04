@@ -12,9 +12,9 @@ class PostScreen extends StatefulWidget{
 }
 class _PostScreenState extends State<PostScreen>{
   List<Post> posts = [
-    Post(1,0,0,"Có nhiều bãi biển đẹp","place1.jpg"),
-    Post(2,1,1,"Cổ kính, hoài niệm","place2.jpg"),
-    Post(3,2,2,"Nước biển trong xanh, cảnh đẹp.","place3.jpg"),
+    Post(1,0,0,DateTime.now(),"Có nhiều bãi biển đẹp","place1.jpg",[],[],[]),
+    Post(2,1,1,DateTime.now(),"Cổ kính, hoài niệm","place2.jpg",[],[],[]),
+    Post(3,2,2,DateTime.now(),"Nước biển trong xanh, cảnh đẹp.","place3.jpg",[],[],[]),
   ];
 
   @override
