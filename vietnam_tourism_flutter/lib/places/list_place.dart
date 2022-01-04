@@ -14,8 +14,6 @@ class _PlaceScreenState extends State<PlaceScreen>{
     Place(1,"Nha Trang","Miền Trung", "Khu Vực Trung Bộ" , "Khám phá ngay trung tâm thành phố Nha Trang có gì chơi:  " , "place1.jpg",[],[],[],[]),
     Place(2,"Thừa Thiên Huế","Miền Trung","Khu Vực Trung Bộ","kiến trúc thời phong kiến , phong cảnh phong tục văn hóa dân tộc việt nam" , "place2.jpg",[],[],[],[]),
     Place(3,"Vịnh Hạ Long" , "Miền Bắc" , "Khu Vực Bắc Bộ", "Có Nhiều bãi đẹp , phong phú về địa hình , các hòn đảo , đá san hô" , "place3.jpg",[],[],[],[]),
-
-
   ];
 
   @override
