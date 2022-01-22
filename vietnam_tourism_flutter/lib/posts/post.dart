@@ -1,34 +1,77 @@
+import 'dart:convert';
+
+import 'package:vietnam_tourism_flutter/api/api.dart';
+import 'package:vietnam_tourism_flutter/main.dart';
 import 'package:vietnam_tourism_flutter/models/place.dart';
 import 'package:flutter/material.dart';
 import 'package:vietnam_tourism_flutter/models/account.dart';
 import 'package:vietnam_tourism_flutter/models/post.dart';
+import 'package:vietnam_tourism_flutter/models/status.dart';
 
 class PostShare extends StatefulWidget {
   PostShare({Key ?key , required this.post }):super(key:key); 
    @override
   _PostShareState createState() => _PostShareState();
   Post post;
-  List<Account> accounts =[
-    Account(1,"khang1","pass1","Khang",DateTime(2001,5,4),"khang1@gmail.com","avatar1.jpg","Background1.jpg",[]),
-    Account(2,"trung2","pass2","Trung",DateTime(2001,5,5),"trung2@gmail.com","avatar2.jpg","Background1.jpg",[]),
-    Account(3,"oanh3","pass3","Oanh",DateTime(2001,5,6),"oanh3@gmail.com","avatar3.jpg","Background1.jpg",[]),
-    Account(4,"khang4","pass4","Hoàng Khang",DateTime(2001,5,7),"khang4@gmail.com","avatar4.jpg","Background1.jpg",[]),
-    Account(5,"trung5","pass5","Trungg",DateTime(2001,5,8),"trung5@gmail.com","avatar5.jpg","Background1.jpg",[]),
-  ];
-    List<Place> places = [
-    Place(1,"Nha Trang","Miền Trung", "Khu Vực Trung Bộ" , "Khám phá ngay trung tâm thành phố Nha Trang có gì chơi:  " , "place1.jpg",[],[],[],[]),
-    Place(2,"Thừa Thiên Huế","Miền Trung","Khu Vực Trung Bộ","kiến trúc thời phong kiến , phong cảnh phong tục văn hóa dân tộc việt nam" , "place2.jpg",[],[],[],[]),
-    Place(3,"Vịnh Hạ Long" , "Miền Bắc" , "Khu Vực Bắc Bộ", "Có Nhiều bãi đẹp , phong phú về địa hình , các hòn đảo , đá san hô" , "place3.jpg",[],[],[],[]),
-  ];
 
-  bool like = false;
-  bool unlike=false;
 }
 
 class _PostShareState extends State<PostShare>{
+  bool like=false;
+  bool unlike=false;
+  int likes=0;
+  int unlikes=0;
+  Iterable<Status> status = [];
+
+  @override
+  void initState(){
+    super.initState();
+    likes = MyApp.repository.lstStatus.where((element) => element.typePost=="post")
+    .where((element) => element.postId==widget.post.id).where((element) => element.typeStatus=="like").toList().length;
+    unlikes = MyApp.repository.lstStatus.where((element) => element.typePost=="post")
+    .where((element) => element.postId==widget.post.id).where((element) => element.typeStatus=="unlike").toList().length;
+    
+    status = MyApp.repository.lstStatus.where((element) => element.accountId==MyApp.accountUsed.id).where((element) => element.typePost=="post")
+    .where((element) => element.postId==widget.post.id).toList();
+      like=false;
+      unlike=false;
+      status.forEach((element) {
+        if(element.typeStatus=="like"){
+          like=true;
+        }
+        else if(element.typeStatus=="unlike"){
+          unlike=true;
+        }                     
+      }
+    );
+  }
+
   @override
   Widget build(BuildContext context){
     double width=MediaQuery.of(context).size.width;
+
+    if(!MyApp.repository.statusIsUpdate){
+      API(url: "http://10.0.2.2:8000/api/status")
+      .getDataString().then((value){
+        final temp = json.decode(value);
+        Iterable s = (temp as List<dynamic>).map((e) => Status.fromJson(e)).toList();
+        MyApp.repository.lstStatus=s.cast<Status>();
+
+        MyApp.repository.statusIsUpdate=true;
+
+        status = MyApp.repository.lstStatus.where((element) => element.accountId==MyApp.accountUsed.id).where((element) => element.typePost=="post")
+        .where((element) => element.postId==widget.post.id).toList();
+
+        likes = MyApp.repository.lstStatus.where((element) => element.typePost=="post")
+        .where((element) => element.postId==widget.post.id).where((element) => element.typeStatus=="like").toList().length;
+
+        unlikes = MyApp.repository.lstStatus.where((element) => element.typePost=="post")
+        .where((element) => element.postId==widget.post.id).where((element) => element.typeStatus=="unlike").toList().length;
+
+        setState(() {});
+      });
+    }
+
     return Container(
       color: const Color.fromRGBO(255, 255, 255, 100),
       padding: const EdgeInsets.all(5),
@@ -44,7 +87,7 @@ class _PostShareState extends State<PostShare>{
                   padding: const EdgeInsets.all(1),
                   child: CircleAvatar(
                     foregroundImage: ExactAssetImage(
-                      "images/"+widget.accounts[widget.post.ownerId].imageName,
+                      "images/avatars/"+MyApp.repository.accounts.where((account) => account.id==widget.post.accountId).first.avatar,
                     ),
                   )
                 ),
@@ -54,7 +97,7 @@ class _PostShareState extends State<PostShare>{
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        widget.accounts[widget.post.ownerId].name,
+                        MyApp.repository.accounts.where((account) => account.id==widget.post.accountId).first.name,
                         style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
@@ -71,20 +114,23 @@ class _PostShareState extends State<PostShare>{
                   ), 
                 ),
                 const Text(
-                  "Đang du lịch tại ",
-                  style: const TextStyle(
+                  "Check in",
+                  style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                   ),
                 ),   
-                Text(
-                  widget.places[widget.post.placeId].name,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
+                TextButton(
+                  onPressed: (){}, 
+                  child: Text(
+                    MyApp.repository.places.where((place) => place.id==widget.post.placeId).first.name,
+                    style: const TextStyle(
+                      fontSize: 15,
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),              
+                )           
               ],
             ),
           ),
@@ -99,7 +145,7 @@ class _PostShareState extends State<PostShare>{
             ),
           ),
           Image.asset(
-            "images/"+widget.post.imageName,
+            "images/places/"+widget.post.imageName,
             width: width,
             fit:BoxFit.cover,
           ),
@@ -108,29 +154,82 @@ class _PostShareState extends State<PostShare>{
               IconButton(
                 onPressed: (){
                   setState(() {
-                    widget.like = widget.like?false:true;
-                    if(widget.like==true&&widget.unlike==true)
-                      widget.unlike=false;
+                    if(like){
+                      like=false;
+                      likes--;
+                      API(url: "http://10.0.2.2:8000/api/change-status")
+                      .postChangeStatus(status.where((element) => element.typeStatus=="like").first, "false").then((value){
+                        MyApp.repository.statusIsUpdate=false;
+                      });
+                    }
+                    else{
+                      likes++;
+                      like=true;
+                      if(like==true&&unlike==true){
+                        unlikes--;
+                        unlike=false;
+                        API(url: "http://10.0.2.2:8000/api/change-status")
+                        .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"like"), "double").then((value){
+                          MyApp.repository.statusIsUpdate=false;            
+                        });
+
+                      }   
+                      else{
+                        API(url: "http://10.0.2.2:8000/api/change-status")
+                        .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"like"), "true").then((value){
+                          MyApp.repository.statusIsUpdate=false;
+                        });
+                      }
+
+                    }
+                                
                   });
                 },
                 icon: Icon(
                   Icons.thumb_up_alt,
-                  color: widget.like?Colors.blue:Colors.grey,
+                  color: like?Colors.blue:Colors.grey,
                 ),
               ),
+              Text(likes.toString()),
               IconButton(
                 onPressed: (){
                   setState(() {
-                    widget.unlike = widget.unlike?false:true;
-                    if(widget.like==true&&widget.unlike==true)
-                      widget.like=false;                    
+                    if(unlike){
+                      unlikes--;
+                      unlike=false;
+                      API(url: "http://10.0.2.2:8000/api/change-status")
+                      .postChangeStatus(status.where((element) => element.typeStatus=="unlike").first, "false").then((value){
+                        MyApp.repository.statusIsUpdate=false;
+                      });
+                    }
+                    else{
+                      unlikes++;
+                      unlike=true;
+                      if(like==true&&unlike==true){
+                        likes--;
+                        like=false;
+                        API(url: "http://10.0.2.2:8000/api/change-status")
+                        .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"unlike"), "double").then((value){
+                          MyApp.repository.statusIsUpdate=false;
+                        });
+                      }   
+                      else{
+                        API(url: "http://10.0.2.2:8000/api/change-status")
+                        .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"unlike"), "true").then((value){
+                          MyApp.repository.statusIsUpdate=false;                     
+                        });
+                      }
+
+                    }
+                                         
                   });
                 },
                 icon: Icon(
                   Icons.thumb_down_alt,
-                  color: widget.unlike?Colors.blue: Colors.grey,
+                  color: unlike?Colors.blue: Colors.grey,
                 ),
               ),
+              Text(unlikes.toString()),
               IconButton(
                 onPressed: (){
                   //showModalBottomSheet

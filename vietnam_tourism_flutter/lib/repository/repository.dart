@@ -1,55 +1,33 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vietnam_tourism_flutter/models/account.dart';
+import 'package:vietnam_tourism_flutter/models/comment.dart';
 import 'package:vietnam_tourism_flutter/models/place.dart';
 import 'package:vietnam_tourism_flutter/models/post.dart';
+import 'package:vietnam_tourism_flutter/models/status.dart';
 
-class DataRepository{
-  final CollectionReference collectionPlace = FirebaseFirestore.instance.collection('places');
-  final CollectionReference collectionPost = FirebaseFirestore.instance.collection('posts');
-  final CollectionReference collectionAccount = FirebaseFirestore.instance.collection('accounts');
-
-  Stream<QuerySnapshot> getStreamPlace(){
-    return collectionPlace.snapshots();
-  }
-  Stream<QuerySnapshot> getStreamPost(){
-    return collectionPost.snapshots();
-  }
-  Stream<QuerySnapshot> getStreamAccount(){
-    return collectionAccount.snapshots();
-  }
-
-  Future<DocumentReference> addPlace(Place place){
-    return collectionPlace.add(place.toJson());
-  }
-
-  void updatePlace(Place place) async{
-    await collectionPlace.doc(place.referenceId).update(place.toJson());
-  }
-
-  void deletePlace(Place place) async{
-    await collectionPlace.doc(place.referenceId).delete();
-  }
-    Future<DocumentReference> addPost(Post post){
-    return collectionPost.add(post.toJson());
-  }
-
-  void updatePet(Post post) async{
-    await collectionPost.doc(post.referenceId).update(post.toJson());
-  }
-
-  void deletePet(Post post) async{
-    await collectionPost.doc(post.referenceId).delete();
-  }
+class Repository{
+  Iterable<Post> posts = [
+    // Post(1,0,0,DateTime.now(),"Có nhiều bãi biển đẹp","place1.jpg",[],[],[]),
+    // Post(2,1,1,DateTime.now(),"Cổ kính, hoài niệm","place2.jpg",[],[],[]),
+    // Post(3,2,2,DateTime.now(),"Nước biển trong xanh, cảnh đẹp.","place3.jpg",[],[],[]),
+  ];
+  Iterable<Account> accounts =[
+    // Account(1,"khang1","pass1","Khang",DateTime(2001,5,4),"khang1@gmail.com","avatar1.jpg","Background1.jpg",[]),
+    // Account(2,"trung2","pass2","Trung",DateTime(2001,5,5),"trung2@gmail.com","avatar2.jpg","Background1.jpg",[]),
+    // Account(3,"oanh3","pass3","Oanh",DateTime(2001,5,6),"oanh3@gmail.com","avatar3.jpg","Background1.jpg",[]),
+    // Account(4,"khang4","pass4","Hoàng Khang",DateTime(2001,5,7),"khang4@gmail.com","avatar4.jpg","Background1.jpg",[]),
+    // Account(5,"trung5","pass5","Trungg",DateTime(2001,5,8),"trung5@gmail.com","avatar5.jpg","Background1.jpg",[]),
+  ];
+  Iterable<Place> places = [
+    // Place(1,"Nha Trang","Miền Trung", "Khu Vực Trung Bộ" , "Khám phá ngay trung tâm thành phố Nha Trang có gì chơi:  " , "place1.jpg",[],[],[],[]),
+    // Place(2,"Thừa Thiên Huế","Miền Trung","Khu Vực Trung Bộ","kiến trúc thời phong kiến , phong cảnh phong tục văn hóa dân tộc việt nam" , "place2.jpg",[],[],[],[]),
+    // Place(3,"Vịnh Hạ Long" , "Miền Bắc" , "Khu Vực Bắc Bộ", "Có Nhiều bãi đẹp , phong phú về địa hình , các hòn đảo , đá san hô" , "place3.jpg",[],[],[],[]),
+  ];
+  Iterable<Comment> comments=[];
+  Iterable<Status> lstStatus=[];
   
-  Future<DocumentReference> addAccount(Account account){
-    return collectionAccount.add(account.toJson());
-  }
-
-  void updateAccount(Account account) async{
-    await collectionAccount.doc(account.referenceId).update(account.toJson());
-  }
-
-  void deleteAccount(Account account) async{
-    await collectionAccount.doc(account.referenceId).delete();
-  }
+  bool postIsUpdate=false;
+  bool accountIsUpdate=false;
+  bool placeIsUpdate=false;
+  bool commentIsUpdate=false;
+  bool statusIsUpdate=false;
 }

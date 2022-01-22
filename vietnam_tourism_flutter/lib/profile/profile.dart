@@ -1,6 +1,10 @@
-import 'package:flutter/material.dart';
+import 'dart:math';
+
 import '../posts/post.dart';
 import '../models/post.dart';
+import 'package:vietnam_tourism_flutter/main.dart';
+import 'package:flutter/material.dart';
+
 
 class Profile extends StatefulWidget{
   const Profile({Key?key}):super(key: key);
@@ -10,14 +14,22 @@ class Profile extends StatefulWidget{
 }
 
 class ProfileState extends State<Profile>{
-  List<Post> posts = [
-    Post(2,1,1,DateTime.now(),"Cổ kính, hoài niệm","place2.jpg",[],[],[]),
-    Post(3,2,2,DateTime.now(),"Nước biển trong xanh, cảnh đẹp.","place3.jpg",[],[],[]),
-  ];
+
+  @override
+  void initState(){
+    super.initState();
+    MyApp.accountUsed.posts=MyApp.repository.posts.where((element) => element.accountId==MyApp.accountUsed.id).toList();
+  }
 
   @override 
   Widget build(BuildContext context){
     double widthScreen=MediaQuery.of(context).size.width;
+    // Image image = Image.network(
+    //   "http://127.0.0.1:8000/images/backgrounds/background"+MyApp.accountUsed.id.toString()+".jpg",
+    //   fit: BoxFit.cover,
+    //   width: widthScreen,
+    //   height: 250,
+    // );
     return Scaffold(
       appBar: AppBar(
         title: const Text("Profile"),
@@ -27,7 +39,7 @@ class ProfileState extends State<Profile>{
           Stack(
             children: [
               Image.asset(
-                "images/Background1.jpg",
+                "images/backgrounds/"+MyApp.accountUsed.background,
                 fit: BoxFit.cover,
                 width: widthScreen,
                 height: 250,
@@ -37,9 +49,9 @@ class ProfileState extends State<Profile>{
                 height: 150,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const[
+                  children:[
                     CircleAvatar(
-                      foregroundImage: ExactAssetImage("images/avatar4.jpg"),
+                      foregroundImage: ExactAssetImage("images/avatars/"+MyApp.accountUsed.avatar),
                       maxRadius: 75,
                     ),   
                   ],
@@ -50,9 +62,9 @@ class ProfileState extends State<Profile>{
           Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.all(10),
-            child: const Text(
-              "Hoàng Khang",
-              style: TextStyle(
+            child: Text(
+              MyApp.accountUsed.name,
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 25,
               ),
@@ -62,15 +74,15 @@ class ProfileState extends State<Profile>{
             padding: const EdgeInsets.all(40),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const[
+              children:[
                 Text(
-                  "Ngày sinh: 4/5/2001",
-                  style: TextStyle(
+                  "Ngày sinh: "+MyApp.accountUsed.birthday.day.toString()+"/"+MyApp.accountUsed.birthday.month.toString()+"/"+MyApp.accountUsed.birthday.year.toString(),
+                  style: const TextStyle(
                     fontSize: 18,
                   ),
                 ),
                 Text(
-                  "Email: khangxyz3g@gmail.com",
+                  "Email: "+MyApp.accountUsed.email,
                   style: TextStyle(
                     fontSize: 18,
                   ),
@@ -78,7 +90,7 @@ class ProfileState extends State<Profile>{
               ],
             ),
           ),
-          ...posts.map((post) => PostShare(post: post)),
+          ...MyApp.accountUsed.posts.map((post) => PostShare(post: post)),
         ],
       ),
     );
