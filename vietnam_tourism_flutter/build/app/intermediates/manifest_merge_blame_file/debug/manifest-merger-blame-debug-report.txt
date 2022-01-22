@@ -30,7 +30,7 @@
 21-->D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\android\app\src\main\AndroidManifest.xml:3:4-40:19
 22        android:name="androidx.multidex.MultiDexApplication"
 23        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-23-->[androidx.core:core:1.1.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\8303770383d3c9b10591bdbd17d32eb5\core-1.1.0\AndroidManifest.xml:24:18-86
+23-->[androidx.core:core:1.6.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\7c6ec111d24f4df63cb024cbd0c44696\core-1.6.0\AndroidManifest.xml:24:18-86
 24        android:debuggable="true"
 25        android:icon="@mipmap/ic_launcher"
 25-->D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\android\app\src\main\AndroidManifest.xml:5:9-43

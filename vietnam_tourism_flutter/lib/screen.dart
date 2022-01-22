@@ -1,4 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:vietnam_tourism_flutter/api/api.dart';
+import 'package:vietnam_tourism_flutter/main.dart';
+
+
+import 'package:vietnam_tourism_flutter/models/account.dart';
+import 'package:vietnam_tourism_flutter/models/comment.dart';
+import 'package:vietnam_tourism_flutter/models/place.dart';
+import 'package:vietnam_tourism_flutter/models/post.dart';
+import 'package:vietnam_tourism_flutter/models/status.dart';
 
 import 'profile/profile.dart';
 import 'posts/list_post.dart';
@@ -36,6 +47,12 @@ class _MainScreenState extends State<MainScreen> {
           Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
         }
         else if(item.id==1){
+          MyApp.repository.postIsUpdate=false;
+          MyApp.repository.accountIsUpdate=false;
+          MyApp.repository.placeIsUpdate=false;
+          MyApp.repository.commentIsUpdate=false;
+          MyApp.repository.statusIsUpdate=false;
+
           Navigator.pop(context);
           Navigator.pop(context);
         }
@@ -91,12 +108,12 @@ class _MainScreenState extends State<MainScreen> {
                   children:[
                     Container(
                       padding: const EdgeInsets.all(14),
-                      child: const CircleAvatar(
+                      child: CircleAvatar(
                         radius: 50,
-                        foregroundImage: ExactAssetImage("images/avatar4.jpg"),
+                        foregroundImage: ExactAssetImage("images/avatars/"+MyApp.accountUsed.avatar),
                       ),   
                     ),      
-                    const Text("cdth19c@gmail.com"),
+                    Text(MyApp.accountUsed.email),
                   ],
                 ),
               ),

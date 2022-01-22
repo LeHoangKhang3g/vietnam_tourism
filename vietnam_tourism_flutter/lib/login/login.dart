@@ -1,4 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:vietnam_tourism_flutter/api/api.dart';
+import 'package:vietnam_tourism_flutter/main.dart';
+import 'package:vietnam_tourism_flutter/models/account.dart';
 import '../screen.dart';
 
 
@@ -25,6 +31,23 @@ class _LoginState extends State<Login> {
     super.dispose();
   }
 
+  void signIn(){
+    API(url: "http://10.0.2.2:8000/api/sign-in")
+    .postSignIn(_controller1.text,_controller2.text)
+    .then((value){
+      final temp=json.decode(value.body);
+      if(temp["success"]){
+        MyApp.accountUsed=Account.fromJson(temp["data"] as Map<String,dynamic>);
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>const MainScreen()));
+      }
+      else{
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>const SignFailed()));
+      }
+    }
+    );
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +55,7 @@ class _LoginState extends State<Login> {
       body:  Column(
         children: [
           Container(
-            padding: const EdgeInsets.only(top: 100),
+            padding: const EdgeInsets.only(top: 50),
             child: Center(
               child: Ink(
                 width: 300,
@@ -60,7 +83,7 @@ class _LoginState extends State<Login> {
             ),
           ),      
           Container(
-            padding: const EdgeInsets.fromLTRB(50, 60, 50, 20),
+            padding: const EdgeInsets.fromLTRB(50, 30, 50, 20),
             child: TextField(
                   controller: _controller1,
                   decoration: const InputDecoration(
@@ -87,7 +110,7 @@ class _LoginState extends State<Login> {
             ),
          ),
          Container(
-           padding: const EdgeInsets.fromLTRB(50, 50, 50, 50),
+           padding: const EdgeInsets.fromLTRB(50, 25, 50, 30),
            child:  OutlinedButton( 
                 onPressed: () {
                   if(_controller1.text.isEmpty||_controller2.text.isEmpty){
@@ -105,11 +128,8 @@ class _LoginState extends State<Login> {
                       ),
                     );
                   }
-                  else if(_controller1.text==_controller2.text){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const MainScreen()));
-                  }
                   else{
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const SignFailed()));
+                    signIn();
                   }
                   setState(() {});
                 },

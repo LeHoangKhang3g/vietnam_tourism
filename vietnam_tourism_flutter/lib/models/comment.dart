@@ -1,40 +1,36 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vietnam_tourism_flutter/models/account.dart';
+import 'package:vietnam_tourism_flutter/models/status.dart';
 
 class Comment {
+  int id;
   int accountId=0;
   String content="";
   DateTime time =DateTime.now();
 
   //Save accountId liked, disliked comment 
-  List<int> likeds = [];   
-  List<int> dislikeds = [];
-  Account? account;
-  String? referenceId;
+  Iterable<Status> status = [];
 
-  Comment(this.accountId,this.content,this.time, this.likeds, this.dislikeds,{this.referenceId});
+  Comment(this.id,this.accountId,this.content,this.time);
 
-  factory Comment.fromJson(Map<String,dynamic> json)=>_commentFromJson(json);
+  factory Comment.fromJson(dynamic json)=>_commentFromJson(json);
 
   Map<String,dynamic> toJson() => _commentToJson(this);
 }
 
-Comment _commentFromJson(Map<String,dynamic> json){
+Comment _commentFromJson(dynamic json){
   return Comment(
-    json["accountId"] as int,
+    json["id"] as int,
+    json["account_id"] as int,
     json["content"] as String,
-    (json["time"] as Timestamp).toDate(),
-    json["likeds"] as List<int>,
-    json["dislikeds"] as List<int>,
+    DateTime.parse(json["time"]),
   );
 }
 
 Map<String,dynamic> _commentToJson(Comment comment){
   return <String,dynamic>{
-    "accountId":comment.accountId,
+    "account_id":comment.accountId,
     "content":comment.content,
     "time":comment.time,
-    "likeds":comment.likeds,
-    "dislikeds":comment.dislikeds,
   };
 }
