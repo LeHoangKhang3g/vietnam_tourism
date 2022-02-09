@@ -19,7 +19,6 @@ use App\Models\Status;
 |
 */
 
-
 Route::get("/posts",function(){
     $posts=Post::all();
     return json_encode($posts);
@@ -63,57 +62,33 @@ Route::post("/sign-in",function(Request $request){
 
 Route::post("/change-status",function(Request $request){
     $data=(array)json_decode($request->data);
-    if($request->check=="true"){
-        $check=Status::where("account_id",$data["account_id"])->where("type_post",$data["type_post"])
-        ->where("post_id",$data["post_id"])->where("type_status",$type_status)->first();
 
-        if(empty($check)){
-            $status = new Status();
-            $status->account_id=$data["account_id"];
-            $status->type_post=$data["type_post"];
-            $status->post_id=$data["post_id"];
-            $status->type_status=$data["type_status"];
-            $status->save();
-            return json_encode([
-                "success"=>true,
-                "check"=>"true",
-            ]);
-        }
-        return json_encode([
-            "success"=>false,
-            "check"=>"true",
-        ]);
+    $statuss=Status::where("account_id",$data["account_id"])->where("type_post",$data["type_post"])
+    ->where("post_id",$data["post_id"]);
+    $statuss->delete();
+
+    if($request->check=="true"){
         
-    }
-    else if($request->check=="false"){
-        $status = Status::where("id",$data["id"])->get();
-        $status->delete();
-        return json_encode([
-            "success"=>true,
-            "check"=>"false",
-        ]);
-    }
-    else if($request->check=="double"){
         $status = new Status();
         $status->account_id=$data["account_id"];
         $status->type_post=$data["type_post"];
         $status->post_id=$data["post_id"];
         $status->type_status=$data["type_status"];
         $status->save();
-
-        $type_status = "like";
-        if($type_status==$data["type_status"])
-            $type_status="unlike";
-
-        $status = Status::where("account_id",$data["account_id"])->where("type_post",$data["type_post"])
-        ->where("post_id",$data["post_id"])->where("type_status",$type_status)->get();
-        $status->delete();
-
         return json_encode([
             "success"=>true,
-            "check"=>"double",
-        ]); 
+            "check"=>"true",
+        ]);
+        
+        
     }
+    else if($request->check=="false"){
+        return json_encode([
+            "success"=>true,
+            "check"=>"false",
+        ]);
+    }
+    
 
 });
 

@@ -50,7 +50,6 @@ class _PostShareState extends State<PostShare>{
     });
     likeBeforeSave=like;
     unlikeBeforeSave=unlikeBeforeSave;
-    
   }
 
   @override
@@ -87,7 +86,7 @@ class _PostShareState extends State<PostShare>{
         isSave=true;
         if(like){
           API(url: "http://10.0.2.2:8000/api/change-status")
-          .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"like"), "double").then((value){
+          .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"like"), "true").then((value){
             likeBeforeSave=like;
             unlikeBeforeSave=unlike;  
             MyApp.repository.statusIsUpdate=false;   
@@ -97,7 +96,7 @@ class _PostShareState extends State<PostShare>{
         }
         else{
           API(url: "http://10.0.2.2:8000/api/change-status")
-          .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"unlike"), "double").then((value){
+          .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"unlike"), "true").then((value){
             likeBeforeSave=like;
             unlikeBeforeSave=unlike;  
             MyApp.repository.statusIsUpdate=false;   
@@ -109,9 +108,9 @@ class _PostShareState extends State<PostShare>{
       else if(likeBeforeSave!=like){
         isSave=true;
         if(like){
-          print("abc");
           API(url: "http://10.0.2.2:8000/api/change-status")
           .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"like"), "true").then((value){
+            print(value.body);
             likeBeforeSave=like;              
             MyApp.repository.statusIsUpdate=false;
             isSave=false;   
@@ -121,6 +120,7 @@ class _PostShareState extends State<PostShare>{
         else{
           API(url: "http://10.0.2.2:8000/api/change-status")
           .postChangeStatus(status.where((element) => element.typeStatus=="like").first, "false").then((value){
+            print(value.body);
             likeBeforeSave=like;
             MyApp.repository.statusIsUpdate=false;
             isSave=false;                
