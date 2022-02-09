@@ -62,7 +62,7 @@ class _MainScreenState extends State<MainScreen> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        backgroundColor: const Color.fromRGBO(230, 230, 230, 100),
+        backgroundColor: const Color.fromRGBO(255, 255, 255, 60),
         appBar: AppBar(
           flexibleSpace: Container(
             height: 40,
@@ -100,7 +100,7 @@ class _MainScreenState extends State<MainScreen> {
             children: [
               Container(
                 decoration: const BoxDecoration(
-                  color: Colors.blue,
+                  color: Colors.green,
                 ),
                 height: 160,
                 padding: const EdgeInsets.all(1),

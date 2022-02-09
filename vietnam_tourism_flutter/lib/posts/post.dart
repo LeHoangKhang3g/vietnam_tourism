@@ -19,9 +19,13 @@ class PostShare extends StatefulWidget {
 class _PostShareState extends State<PostShare>{
   bool like=false;
   bool unlike=false;
+  bool likeBeforeSave=false;
+  bool unlikeBeforeSave=false;
   int likes=0;
   int unlikes=0;
   Iterable<Status> status = [];
+  bool isLoad=false;
+  bool isSave=false;
 
   @override
   void initState(){
@@ -33,49 +37,123 @@ class _PostShareState extends State<PostShare>{
     
     status = MyApp.repository.lstStatus.where((element) => element.accountId==MyApp.accountUsed.id).where((element) => element.typePost=="post")
     .where((element) => element.postId==widget.post.id).toList();
-      like=false;
-      unlike=false;
-      status.forEach((element) {
-        if(element.typeStatus=="like"){
-          like=true;
-        }
-        else if(element.typeStatus=="unlike"){
-          unlike=true;
-        }                     
+
+    like=false;
+    unlike=false;
+    status.forEach((element) {
+      if(element.typeStatus=="like"){
+        like=true;
       }
-    );
+      else if(element.typeStatus=="unlike"){
+        unlike=true;
+      }                     
+    });
+    likeBeforeSave=like;
+    unlikeBeforeSave=unlikeBeforeSave;
+    
   }
 
   @override
   Widget build(BuildContext context){
     double width=MediaQuery.of(context).size.width;
 
-    if(!MyApp.repository.statusIsUpdate){
-      API(url: "http://10.0.2.2:8000/api/status")
-      .getDataString().then((value){
-        final temp = json.decode(value);
-        Iterable s = (temp as List<dynamic>).map((e) => Status.fromJson(e)).toList();
-        MyApp.repository.lstStatus=s.cast<Status>();
+    if(!isLoad&&!isSave){
+      if(!MyApp.repository.statusIsUpdate){
+        isLoad=true;
+        API(url: "http://10.0.2.2:8000/api/status")
+        .getDataString().then((value){
+          final temp = json.decode(value);
+          Iterable s = (temp as List<dynamic>).map((e) => Status.fromJson(e)).toList();
+          MyApp.repository.lstStatus=s.cast<Status>();
 
-        MyApp.repository.statusIsUpdate=true;
+          status = MyApp.repository.lstStatus.where((element) => element.accountId==MyApp.accountUsed.id).where((element) => element.typePost=="post")
+          .where((element) => element.postId==widget.post.id).toList();
 
-        status = MyApp.repository.lstStatus.where((element) => element.accountId==MyApp.accountUsed.id).where((element) => element.typePost=="post")
-        .where((element) => element.postId==widget.post.id).toList();
+          likes = MyApp.repository.lstStatus.where((element) => element.typePost=="post")
+          .where((element) => element.postId==widget.post.id).where((element) => element.typeStatus=="like").toList().length;
 
-        likes = MyApp.repository.lstStatus.where((element) => element.typePost=="post")
-        .where((element) => element.postId==widget.post.id).where((element) => element.typeStatus=="like").toList().length;
+          unlikes = MyApp.repository.lstStatus.where((element) => element.typePost=="post")
+          .where((element) => element.postId==widget.post.id).where((element) => element.typeStatus=="unlike").toList().length;
 
-        unlikes = MyApp.repository.lstStatus.where((element) => element.typePost=="post")
-        .where((element) => element.postId==widget.post.id).where((element) => element.typeStatus=="unlike").toList().length;
+          isLoad=false;
+          MyApp.repository.statusIsUpdate=true;
+          setState(() {});
+        });
+      }
+    }
 
-        setState(() {});
-      });
+    if(!isLoad&&!isSave){
+      if(likeBeforeSave!=like&&unlikeBeforeSave!=unlike){
+        isSave=true;
+        if(like){
+          API(url: "http://10.0.2.2:8000/api/change-status")
+          .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"like"), "double").then((value){
+            likeBeforeSave=like;
+            unlikeBeforeSave=unlike;  
+            MyApp.repository.statusIsUpdate=false;   
+            isSave=false;      
+            setState(() {}); 
+          });
+        }
+        else{
+          API(url: "http://10.0.2.2:8000/api/change-status")
+          .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"unlike"), "double").then((value){
+            likeBeforeSave=like;
+            unlikeBeforeSave=unlike;  
+            MyApp.repository.statusIsUpdate=false;   
+            isSave=false;      
+            setState(() {});    
+          });
+        }
+      }
+      else if(likeBeforeSave!=like){
+        isSave=true;
+        if(like){
+          print("abc");
+          API(url: "http://10.0.2.2:8000/api/change-status")
+          .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"like"), "true").then((value){
+            likeBeforeSave=like;              
+            MyApp.repository.statusIsUpdate=false;
+            isSave=false;   
+            setState(() {}); 
+          });
+        }
+        else{
+          API(url: "http://10.0.2.2:8000/api/change-status")
+          .postChangeStatus(status.where((element) => element.typeStatus=="like").first, "false").then((value){
+            likeBeforeSave=like;
+            MyApp.repository.statusIsUpdate=false;
+            isSave=false;                
+            setState(() {});  
+          });
+        }
+      }
+      else if(unlikeBeforeSave!=unlike){
+        if(unlike){
+          API(url: "http://10.0.2.2:8000/api/change-status")
+          .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"unlike"), "true").then((value){
+            unlikeBeforeSave=unlike;             
+            MyApp.repository.statusIsUpdate=false; 
+            isSave=false;          
+            setState(() {});                 
+          });
+        }
+        else{
+          API(url: "http://10.0.2.2:8000/api/change-status")
+          .postChangeStatus(status.where((element) => element.typeStatus=="unlike").first, "false").then((value){
+            unlikeBeforeSave=unlike;
+            MyApp.repository.statusIsUpdate=false;
+            isSave=false;    
+            setState(() {});    
+          });
+        }
+      }
     }
 
     return Container(
-      color: const Color.fromRGBO(255, 255, 255, 100),
+      color: Colors.white,
       padding: const EdgeInsets.all(5),
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -157,10 +235,6 @@ class _PostShareState extends State<PostShare>{
                     if(like){
                       like=false;
                       likes--;
-                      API(url: "http://10.0.2.2:8000/api/change-status")
-                      .postChangeStatus(status.where((element) => element.typeStatus=="like").first, "false").then((value){
-                        MyApp.repository.statusIsUpdate=false;
-                      });
                     }
                     else{
                       likes++;
@@ -168,26 +242,13 @@ class _PostShareState extends State<PostShare>{
                       if(like==true&&unlike==true){
                         unlikes--;
                         unlike=false;
-                        API(url: "http://10.0.2.2:8000/api/change-status")
-                        .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"like"), "double").then((value){
-                          MyApp.repository.statusIsUpdate=false;            
-                        });
-
                       }   
-                      else{
-                        API(url: "http://10.0.2.2:8000/api/change-status")
-                        .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"like"), "true").then((value){
-                          MyApp.repository.statusIsUpdate=false;
-                        });
-                      }
-
-                    }
-                                
+                    }                        
                   });
                 },
                 icon: Icon(
                   Icons.thumb_up_alt,
-                  color: like?Colors.blue:Colors.grey,
+                  color: like?Colors.green:Colors.grey,
                 ),
               ),
               Text(likes.toString()),
@@ -197,10 +258,7 @@ class _PostShareState extends State<PostShare>{
                     if(unlike){
                       unlikes--;
                       unlike=false;
-                      API(url: "http://10.0.2.2:8000/api/change-status")
-                      .postChangeStatus(status.where((element) => element.typeStatus=="unlike").first, "false").then((value){
-                        MyApp.repository.statusIsUpdate=false;
-                      });
+                      
                     }
                     else{
                       unlikes++;
@@ -208,25 +266,13 @@ class _PostShareState extends State<PostShare>{
                       if(like==true&&unlike==true){
                         likes--;
                         like=false;
-                        API(url: "http://10.0.2.2:8000/api/change-status")
-                        .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"unlike"), "double").then((value){
-                          MyApp.repository.statusIsUpdate=false;
-                        });
                       }   
-                      else{
-                        API(url: "http://10.0.2.2:8000/api/change-status")
-                        .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"unlike"), "true").then((value){
-                          MyApp.repository.statusIsUpdate=false;                     
-                        });
-                      }
-
-                    }
-                                         
+                    }                                         
                   });
                 },
                 icon: Icon(
                   Icons.thumb_down_alt,
-                  color: unlike?Colors.blue: Colors.grey,
+                  color: unlike?Colors.green: Colors.grey,
                 ),
               ),
               Text(unlikes.toString()),

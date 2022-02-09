@@ -51,7 +51,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.green,
       body:  Column(
         children: [
           Container(
@@ -66,7 +66,7 @@ class _LoginState extends State<Login> {
                 ),
                 child: const Icon(
                 Icons.public,
-                  color: Colors.blue,
+                  color: Colors.green,
                   size: 90,
                 ),
               ),
@@ -161,7 +161,7 @@ class SignFailed extends StatefulWidget{
     @override
     Widget build(BuildContext context) {
       return Scaffold(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.green,
         body:  Column(
         children: [
           Container(
@@ -176,7 +176,7 @@ class SignFailed extends StatefulWidget{
                 ),
                 child: const Icon(
                 Icons.public_off,
-                  color: Colors.blue,
+                  color: Colors.green,
                   size: 90,
                 ),
               ),

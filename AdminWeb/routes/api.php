@@ -64,26 +64,36 @@ Route::post("/sign-in",function(Request $request){
 Route::post("/change-status",function(Request $request){
     $data=(array)json_decode($request->data);
     if($request->check=="true"){
-        $status = new Status();
-        $status->account_id=$data["account_id"];
-        $status->type_post=$data["type_post"];
-        $status->post_id=$data["post_id"];
-        $status->type_status=$data["type_status"];
-        $status->save();
+        $check=Status::where("account_id",$data["account_id"])->where("type_post",$data["type_post"])
+        ->where("post_id",$data["post_id"])->where("type_status",$type_status)->first();
+
+        if(empty($check)){
+            $status = new Status();
+            $status->account_id=$data["account_id"];
+            $status->type_post=$data["type_post"];
+            $status->post_id=$data["post_id"];
+            $status->type_status=$data["type_status"];
+            $status->save();
+            return json_encode([
+                "success"=>true,
+                "check"=>"true",
+            ]);
+        }
         return json_encode([
-            "success"=>true,
+            "success"=>false,
             "check"=>"true",
         ]);
+        
     }
     else if($request->check=="false"){
-        $status = Status::find($data["id"]);
+        $status = Status::where("id",$data["id"])->get();
         $status->delete();
         return json_encode([
             "success"=>true,
             "check"=>"false",
         ]);
     }
-    else{
+    else if($request->check=="double"){
         $status = new Status();
         $status->account_id=$data["account_id"];
         $status->type_post=$data["type_post"];
@@ -96,7 +106,7 @@ Route::post("/change-status",function(Request $request){
             $type_status="unlike";
 
         $status = Status::where("account_id",$data["account_id"])->where("type_post",$data["type_post"])
-        ->where("post_id",$data["post_id"])->where("type_status",$type_status);
+        ->where("post_id",$data["post_id"])->where("type_status",$type_status)->get();
         $status->delete();
 
         return json_encode([
