@@ -1,4 +1,4 @@
-#Sun Jan 23 00:23:00 ICT 2022
+#Wed Feb 02 14:41:48 ICT 2022
 base.2=D\:\\Hoc_tap\\Hoc_Tap_Nam_3_HK1\\LapTrinhDiDong\\DoAn\\vietnam_tourism\\vietnam_tourism_flutter\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
 path.2=classes3.dex
 base.1=D\:\\Hoc_tap\\Hoc_Tap_Nam_3_HK1\\LapTrinhDiDong\\DoAn\\vietnam_tourism\\vietnam_tourism_flutter\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
