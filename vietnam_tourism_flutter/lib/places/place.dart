@@ -86,7 +86,7 @@ class _PlacePostState extends State<PlacePost>{
         isSave=true;
         if(like){
           API(url: "http://10.0.2.2:8000/api/change-status")
-          .postChangeStatus(Status(0,MyApp.accountUsed.id,"place",widget.place.id,"like"), "double").then((value){
+          .postChangeStatus(Status(0,MyApp.accountUsed.id,"place",widget.place.id,"like"), "true").then((value){
             likeBeforeSave=like;
             unlikeBeforeSave=unlike;  
             MyApp.repository.statusIsUpdate=false;   
@@ -96,7 +96,7 @@ class _PlacePostState extends State<PlacePost>{
         }
         else{
           API(url: "http://10.0.2.2:8000/api/change-status")
-          .postChangeStatus(Status(0,MyApp.accountUsed.id,"place",widget.place.id,"unlike"), "double").then((value){
+          .postChangeStatus(Status(0,MyApp.accountUsed.id,"place",widget.place.id,"unlike"), "true").then((value){
             likeBeforeSave=like;
             unlikeBeforeSave=unlike;  
             MyApp.repository.statusIsUpdate=false;   
