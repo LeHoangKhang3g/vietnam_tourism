@@ -12,7 +12,24 @@
          to allow setting breakpoints, to provide hot reload, etc.
     -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+
+    <queries>
+        <package android:name="com.google.android.apps.maps" />
+        <package android:name="com.google.android.apps.mapslite" />
+        <package android:name="com.autonavi.minimap" />
+        <package android:name="com.baidu.BaiduMap" />
+        <package android:name="com.waze" />
+        <package android:name="ru.yandex.yandexnavi" />
+        <package android:name="ru.yandex.yandexmaps" />
+        <package android:name="com.citymapper.app.release" />
+        <package android:name="com.mapswithme.maps.pro" />
+        <package android:name="net.osmand" />
+        <package android:name="net.osmand.plus" />
+        <package android:name="ru.dublgis.dgismobile" />
+        <package android:name="com.tencent.map" />
+        <package android:name="com.here.app.maps" />
+        <package android:name="com.huawei.maps.app" />
+    </queries> <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
     <!-- <uses-sdk android:minSdkVersion="14" /> -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />

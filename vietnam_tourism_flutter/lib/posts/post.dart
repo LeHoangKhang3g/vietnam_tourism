@@ -1,12 +1,16 @@
 import 'dart:convert';
 
+import 'package:map_launcher/map_launcher.dart';
 import 'package:vietnam_tourism_flutter/api/api.dart';
+import 'package:vietnam_tourism_flutter/comments/comment.dart';
 import 'package:vietnam_tourism_flutter/main.dart';
+import 'package:vietnam_tourism_flutter/models/comment.dart';
 import 'package:vietnam_tourism_flutter/models/place.dart';
 import 'package:flutter/material.dart';
 import 'package:vietnam_tourism_flutter/models/account.dart';
 import 'package:vietnam_tourism_flutter/models/post.dart';
 import 'package:vietnam_tourism_flutter/models/status.dart';
+import 'package:vietnam_tourism_flutter/time/time.dart';
 
 class PostShare extends StatefulWidget {
   PostShare({Key ?key , required this.post }):super(key:key); 
@@ -26,6 +30,8 @@ class _PostShareState extends State<PostShare>{
   Iterable<Status> status = [];
   bool isLoad=false;
   bool isSave=false;
+  bool visibleComment = false;
+  Iterable<Comment> comments = [];
 
   @override
   void initState(){
@@ -34,6 +40,8 @@ class _PostShareState extends State<PostShare>{
     .where((element) => element.postId==widget.post.id).where((element) => element.typeStatus=="like").toList().length;
     unlikes = MyApp.repository.lstStatus.where((element) => element.typePost=="post")
     .where((element) => element.postId==widget.post.id).where((element) => element.typeStatus=="unlike").toList().length;
+
+  
     
     status = MyApp.repository.lstStatus.where((element) => element.accountId==MyApp.accountUsed.id).where((element) => element.typePost=="post")
     .where((element) => element.postId==widget.post.id).toList();
@@ -52,10 +60,66 @@ class _PostShareState extends State<PostShare>{
     unlikeBeforeSave=unlikeBeforeSave;
   }
 
+  
+
   @override
   Widget build(BuildContext context){
     double width=MediaQuery.of(context).size.width;
 
+    comments=MyApp.repository.comments.where((element) => element.typePost=="post")
+    .where((element) => element.postId==widget.post.id).toList();
+
+
+    Widget buildComment(Comment comment) => !visibleComment ?Container() :  Container(
+    padding: const EdgeInsets.all(5.0),
+    child: Row(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(1),
+          child: CircleAvatar(
+            foregroundImage: ExactAssetImage(
+             "images/avatars/"+MyApp.repository.accounts.where((element) => element.id == comment.accountId).first.avatar,
+            ),
+          )
+        ),
+        Container(
+          margin: const EdgeInsets.only(right: 30),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                MyApp.repository.accounts.where((account) => account.id==comment.accountId).first.name,
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                SeeTime(comment.time).seeTime(),
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+            ],
+          ), 
+        ),
+        SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(1),
+            child: Text(
+              comment.content,
+              style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.normal,    
+                ),
+              softWrap: true,
+            ),
+          ),
+        ),
+      ],
+    )
+  );
     if(!isLoad&&!isSave){
       if(!MyApp.repository.statusIsUpdate){
         isLoad=true;
@@ -80,7 +144,13 @@ class _PostShareState extends State<PostShare>{
         });
       }
     }
-
+    Future<void> goToXY(double x, double y, String title) async {
+      final availableMaps = await MapLauncher.installedMaps;
+      await availableMaps.first.showMarker(
+        coords: Coords(x, y),
+        title: title,
+      );
+    }
     if(!isLoad&&!isSave){
       if(likeBeforeSave!=like&&unlikeBeforeSave!=unlike){
         isSave=true;
@@ -110,7 +180,6 @@ class _PostShareState extends State<PostShare>{
         if(like){
           API(url: "http://10.0.2.2:8000/api/change-status")
           .postChangeStatus(Status(0,MyApp.accountUsed.id,"post",widget.post.id,"like"), "true").then((value){
-            print(value.body);
             likeBeforeSave=like;              
             MyApp.repository.statusIsUpdate=false;
             isSave=false;   
@@ -120,7 +189,6 @@ class _PostShareState extends State<PostShare>{
         else{
           API(url: "http://10.0.2.2:8000/api/change-status")
           .postChangeStatus(status.where((element) => element.typeStatus=="like").first, "false").then((value){
-            print(value.body);
             likeBeforeSave=like;
             MyApp.repository.statusIsUpdate=false;
             isSave=false;                
@@ -150,6 +218,7 @@ class _PostShareState extends State<PostShare>{
       }
     }
 
+
     return Container(
       color: Colors.white,
       padding: const EdgeInsets.all(5),
@@ -167,7 +236,7 @@ class _PostShareState extends State<PostShare>{
                     foregroundImage: ExactAssetImage(
                       "images/avatars/"+MyApp.repository.accounts.where((account) => account.id==widget.post.accountId).first.avatar,
                     ),
-                  )
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(right: 30),
@@ -181,9 +250,9 @@ class _PostShareState extends State<PostShare>{
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const Text(
-                        "2 giờ trước",
-                        style: TextStyle(
+                      Text(
+                        SeeTime(widget.post.time).seeTime(),
+                        style:const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.normal,
                         ),
@@ -199,7 +268,10 @@ class _PostShareState extends State<PostShare>{
                   ),
                 ),   
                 TextButton(
-                  onPressed: (){}, 
+                  onPressed: (){
+                    final place =MyApp.repository.places.where((place) => place.id==widget.post.placeId).first;
+                    goToXY(place.locationX,place.locationY,place.name);
+                  }, 
                   child: Text(
                     MyApp.repository.places.where((place) => place.id==widget.post.placeId).first.name,
                     style: const TextStyle(
@@ -272,21 +344,25 @@ class _PostShareState extends State<PostShare>{
                 },
                 icon: Icon(
                   Icons.thumb_down_alt,
-                  color: unlike?Colors.green: Colors.grey,
+                  color: unlike?Colors.red: Colors.grey,
                 ),
               ),
               Text(unlikes.toString()),
               IconButton(
                 onPressed: (){
-                  //showModalBottomSheet
+                  visibleComment = ! visibleComment;
+                  setState(() {});
                 },
-                icon: const Icon(
+                icon: Icon(
                   Icons.comment,
-                  color: Colors.grey,
+                  color: comments.where((element) => element.accountId==MyApp.accountUsed.id).toList().isNotEmpty?Colors.green:Colors.grey,
                 ),
               ),
+              Text(comments.length.toString())
             ],
           ),
+          !visibleComment?Container():CommentPage(typePost: "post",id: widget.post.id),
+          ...comments.map(buildComment).toList(),
         ],
       ),
     );

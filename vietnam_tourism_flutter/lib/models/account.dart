@@ -38,7 +38,7 @@ Map<String,dynamic> _accountToJson(Account account){
     "username":account.username,
     "password":account.password,
     "name":account.name,
-    "birthday":account.birthday,
+    "birthday":account.birthday.toIso8601String(),
     "email":account.email,
     "avatar":account.avatar,
     "background":account.background,

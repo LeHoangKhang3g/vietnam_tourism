@@ -45,6 +45,11 @@ class _MainScreenState extends State<MainScreen> {
       onTap: (){
         if(item.id==0){
           Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
+          MyApp.repository.postIsUpdate=false;
+          MyApp.repository.accountIsUpdate=false;
+          MyApp.repository.placeIsUpdate=false;
+          MyApp.repository.commentIsUpdate=false;
+          MyApp.repository.statusIsUpdate=false;
         }
         else if(item.id==1){
           MyApp.repository.postIsUpdate=false;
@@ -66,8 +71,12 @@ class _MainScreenState extends State<MainScreen> {
         appBar: AppBar(
           flexibleSpace: Container(
             height: 40,
-            margin: const EdgeInsets.only(top: 10, left: 160, right: 20),
+            margin: const EdgeInsets.only(top: 70, left: 160, right: 20),
             child: TextField(
+              onChanged: (value){
+                MyApp.searchKeyword=value;
+                setState(() {});
+              },
               controller: controler,
               decoration: const InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -121,10 +130,10 @@ class _MainScreenState extends State<MainScreen> {
             ],
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
-            PostScreen(),
-            PlaceScreen(),
+            PostScreen(MyApp.searchKeyword),
+            PlaceScreen(MyApp.searchKeyword),
           ],
         ),
       ),

@@ -5,6 +5,7 @@ import 'package:http/http.dart';
 import 'package:vietnam_tourism_flutter/api/api.dart';
 import 'package:vietnam_tourism_flutter/main.dart';
 import 'package:vietnam_tourism_flutter/models/account.dart';
+import 'package:vietnam_tourism_flutter/sign_up/sign_up.dart';
 import '../screen.dart';
 
 
@@ -30,6 +31,7 @@ class _LoginState extends State<Login> {
     _controller2.dispose();
     super.dispose();
   }
+  
 
   void signIn(){
     API(url: "http://10.0.2.2:8000/api/sign-in")
@@ -47,12 +49,14 @@ class _LoginState extends State<Login> {
     );
     setState(() {});
   }
+  
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.green,
-      body:  Column(
+      body:  ListView(
         children: [
           Container(
             padding: const EdgeInsets.only(top: 50),
@@ -73,6 +77,7 @@ class _LoginState extends State<Login> {
             ),
           ),
           Container(
+            alignment: Alignment.center,
             padding: const EdgeInsets.only(top: 20),
             child: const  Text(
               "SignIn",
@@ -83,7 +88,7 @@ class _LoginState extends State<Login> {
             ),
           ),      
           Container(
-            padding: const EdgeInsets.fromLTRB(50, 30, 50, 20),
+            padding: const EdgeInsets.fromLTRB(50, 5, 50, 5),
             child: TextField(
                   controller: _controller1,
                   decoration: const InputDecoration(
@@ -92,60 +97,79 @@ class _LoginState extends State<Login> {
                     border: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.black),
                     ),
-                    labelText: 'Email',
+                    labelText: 'Username',
                   ),
               ),
           ),
-         Container(
-           padding: const EdgeInsets.fromLTRB(50, 5, 50, 5),
-           child: TextField(
-                controller: _controller2,
-                obscureText: true,
-                decoration: const InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(),
-                  labelText: 'Password',
-                ),
-            ),
-         ),
-         Container(
-           padding: const EdgeInsets.fromLTRB(50, 25, 50, 30),
-           child:  OutlinedButton( 
-                onPressed: () {
-                  if(_controller1.text.isEmpty||_controller2.text.isEmpty){
-                    showDialog(
-                      context: context, 
-                      builder: (BuildContext context)=>AlertDialog(
-                        title: const Text("Thông báo"),
-                        content: const Text("Chưa nhập thông tin!"),
-                        actions: [
-                          TextButton(
-                            onPressed: ()=>Navigator.pop(context,"Cancel"),
-                            child: const Text("Ok"),
-                          ),
-                        ],
-                      ),
-                    );
-                  }
-                  else{
-                    signIn();
-                  }
-                  setState(() {});
-                },
-                child: const Text(
-                  'SIGN IN',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+          Container(
+            padding: const EdgeInsets.fromLTRB(50, 5, 50, 5),
+            child: TextField(
+                  controller: _controller2,
+                  obscureText: true,
+                  decoration: const InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(),
+                    labelText: 'Password',
                   ),
-                  ),
-                style: ButtonStyle(
-                  backgroundColor:  MaterialStateProperty.resolveWith((states) => Colors.black),
-                  fixedSize: MaterialStateProperty.resolveWith((states) => const Size(1500,50)), 
+              ),
+          ),
+          Container(
+            padding: const EdgeInsets.fromLTRB(50, 5, 50, 5),
+            child:  OutlinedButton( 
+              onPressed: () {
+                if(_controller1.text.isEmpty||_controller2.text.isEmpty){
+                  showDialog(
+                    context: context, 
+                    builder: (BuildContext context)=>AlertDialog(
+                      title: const Text("Thông báo"),
+                      content: const Text("Chưa nhập thông tin!"),
+                      actions: [
+                        TextButton(
+                          onPressed: ()=>Navigator.pop(context,"Cancel"),
+                          child: const Text("Ok"),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+                else{
+                  signIn();
+                }
+                setState(() {});
+              },
+              child: const Text(
+                'SIGN IN',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
                 ),
+                ),
+              style: ButtonStyle(
+                backgroundColor:  MaterialStateProperty.resolveWith((states) => Colors.black),
+                fixedSize: MaterialStateProperty.resolveWith((states) => const Size(1500,50)), 
+              ),
             ),
+          ),
+          Container(
+            padding: const EdgeInsets.fromLTRB(50, 5, 50, 5),
+            child:  OutlinedButton( 
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>SignUp()));
+              },
+              child: const Text(
+                'SIGN UP',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+                ),
+              style: ButtonStyle(
+                backgroundColor:  MaterialStateProperty.resolveWith((states) => Colors.blue),
+                fixedSize: MaterialStateProperty.resolveWith((states) => const Size(1500,50)), 
+              ),
             ),
+          ),
         ],
       ),
     );

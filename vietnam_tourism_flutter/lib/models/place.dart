@@ -12,6 +12,8 @@ class Place{
   String region=""; //khu vực
   String description=""; //Mô tả
   String imageName="";
+  double locationX;
+  double locationY;
 
   int likes=0;
   int unlikes=0;
@@ -21,7 +23,7 @@ class Place{
   Iterable<Comment> comments = [];
   //Save postId share this place
 
-  Place(this.id,this.name, this.area, this.region, this.description, this.imageName);
+  Place(this.id,this.name, this.area, this.region, this.description, this.imageName, this.locationX, this.locationY);
 
   factory Place.fromJson(dynamic json)=>_placeFromJson(json);
 
@@ -36,6 +38,8 @@ Place _placeFromJson(dynamic json){
     json["region"] as String,
     json["description"] as String,
     json["image_name"] as String,
+    json["location_x"] as double,
+    json["location_y"] as double,
   );
 }
 
@@ -47,6 +51,8 @@ Map<String,dynamic> _placeToJson(Place place){
     "region":place.region,
     "description":place.description,
     "image_name":place.imageName,
+    "location_x":place.locationX,
+    "location_y":place.locationY,
   };
 }
 

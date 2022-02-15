@@ -5,13 +5,17 @@ import 'package:vietnam_tourism_flutter/models/status.dart';
 class Comment {
   int id;
   int accountId=0;
+  String typePost="";
+  int postId=0;
   String content="";
   DateTime time =DateTime.now();
+
+
 
   //Save accountId liked, disliked comment 
   Iterable<Status> status = [];
 
-  Comment(this.id,this.accountId,this.content,this.time);
+  Comment(this.id,this.accountId,this.typePost, this.postId,this.content,this.time);
 
   factory Comment.fromJson(dynamic json)=>_commentFromJson(json);
 
@@ -22,6 +26,8 @@ Comment _commentFromJson(dynamic json){
   return Comment(
     json["id"] as int,
     json["account_id"] as int,
+    json["type_post"] as String,
+    json["post_id"] as int,
     json["content"] as String,
     DateTime.parse(json["time"]),
   );
@@ -30,7 +36,9 @@ Comment _commentFromJson(dynamic json){
 Map<String,dynamic> _commentToJson(Comment comment){
   return <String,dynamic>{
     "account_id":comment.accountId,
+    "type_post":comment.typePost,
+    "post_id":comment.postId,
     "content":comment.content,
-    "time":comment.time,
+    "time":comment.time.toIso8601String(),
   };
 }

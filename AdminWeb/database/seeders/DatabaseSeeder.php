@@ -71,21 +71,27 @@ class DatabaseSeeder extends Seeder
             "area"          =>"Miền Trung",
             "region"        =>"Khu Vực Trung Bộ",
             "description"   =>"Khám phá ngay trung tâm thành phố Nha Trang có gì chơi:  ",
-            "image_name"    =>"place1.jpg"
+            "image_name"    =>"place1.jpg",
+            "location_x"    =>12.242602598120262,
+            "location_y"    =>109.19704465844295,
         ]);
         Place::insert([
             "name"          =>"Thừa Thiên Huế",
             "area"          =>"Miền Trung",
             "region"        =>"Khu Vực Trung Bộ",
             "description"   =>"Kiến trúc thời phong kiến , phong cảnh phong tục văn hóa dân tộc việt nam",
-            "image_name"    =>"place2.jpg"
+            "image_name"    =>"place2.jpg",
+            "location_x"    =>16.47636243680624,
+            "location_y"    =>107.57845933185345,
         ]);
         Place::insert([
             "name"          =>"Vịnh Hạ Long",
             "area"          =>"Miền Bắc",
             "region"        =>"Khu Vực Bắc Bộ",
             "description"   =>"Có Nhiều bãi đẹp , phong phú về địa hình , các hòn đảo , đá san hô",
-            "image_name"    =>"place3.jpg"
+            "image_name"    =>"place3.jpg",
+            "location_x"    =>20.84116717857313,
+            "location_y"    =>107.16329982935363,
         ]);
         //=================================================================================================================
         Post::insert([
