@@ -39,7 +39,7 @@ Map<String,dynamic> _postToJson(Post post){
     "id":post.id,
     "account_id":post.accountId,
     "place_id":post.placeId,
-    "time":post.time,
+    "time":post.time.toIso8601String(),
     "content":post.content,
     "image_name":post.imageName,
   };

@@ -20,6 +20,8 @@ class CreatePlaceTable extends Migration
             $table->string("region");
             $table->string("description");
             $table->string("image_name");
+            $table->double("location_x");
+            $table->double("location_y");
             $table->timestamps();
         });
     }

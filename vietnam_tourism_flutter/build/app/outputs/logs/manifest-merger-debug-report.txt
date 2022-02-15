@@ -7,6 +7,7 @@ INJECTED from D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\v
 MERGED from D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\android\app\src\main\AndroidManifest.xml:1:1-41:12
 MERGED from [:cloud_firestore] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-25:12
 MERGED from [:sqflite] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider_android] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\c4aa2cd3498a410f91479770484260f1\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
@@ -175,6 +176,8 @@ MERGED from [:cloud_firestore] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\
 MERGED from [:cloud_firestore] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
@@ -329,6 +332,68 @@ ADDED from [:firebase_core] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vie
 		ADDED from [:firebase_core] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_core] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+queries
+ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-23:15
+package#com.google.android.apps.maps
+ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-64
+	android:name
+		ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-61
+package#com.google.android.apps.mapslite
+ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:9-68
+	android:name
+		ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:18-65
+package#com.autonavi.minimap
+ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:10:9-56
+	android:name
+		ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:10:18-53
+package#com.baidu.BaiduMap
+ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-54
+	android:name
+		ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:18-51
+package#com.waze
+ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-44
+	android:name
+		ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:12:18-41
+package#ru.yandex.yandexnavi
+ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:13:9-56
+	android:name
+		ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:13:18-53
+package#ru.yandex.yandexmaps
+ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:14:9-56
+	android:name
+		ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:14:18-53
+package#com.citymapper.app.release
+ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:15:9-62
+	android:name
+		ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:15:18-59
+package#com.mapswithme.maps.pro
+ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:16:9-59
+	android:name
+		ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:16:18-56
+package#net.osmand
+ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:17:9-46
+	android:name
+		ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:17:18-43
+package#net.osmand.plus
+ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:18:9-51
+	android:name
+		ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:18:18-48
+package#ru.dublgis.dgismobile
+ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:19:9-57
+	android:name
+		ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:19:18-54
+package#com.tencent.map
+ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:20:9-51
+	android:name
+		ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:20:18-48
+package#com.here.app.maps
+ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:21:9-53
+	android:name
+		ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:21:18-50
+package#com.huawei.maps.app
+ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:22:9-55
+	android:name
+		ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:22:18-52
 meta-data#com.google.firebase.components:com.google.firebase.analytics.ktx.FirebaseAnalyticsKtxRegistrar
 ADDED from [com.google.firebase:firebase-analytics-ktx:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\5e24434a5cffb56dd38a51a637c686d5\jetified-firebase-analytics-ktx-20.0.0\AndroidManifest.xml:11:13-13:85
 	android:value

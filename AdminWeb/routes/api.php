@@ -20,12 +20,12 @@ use App\Models\Status;
 */
 
 Route::get("/posts",function(){
-    $posts=Post::all();
+    $posts=Post::orderBy('id','DESC')->get();
     return json_encode($posts);
 });
 
 Route::get("/places",function(){
-    $places=Place::all();
+    $places=Place::orderBy('id','DESC')->get();
     return json_encode($places);
 });
 
@@ -92,14 +92,84 @@ Route::post("/change-status",function(Request $request){
 
 });
 
-// Route::post("/add-post-share",function(){
+Route::post("/add-post-share",function(Request $request){
+    try{
+        $data=(array)json_decode($request->data);
+
+        $post = new Post();
+        $post->account_id=$data["account_id"];
+        $post->place_id=$data["place_id"];
+        $post->time=$data["time"];
+        $post->content=$data["content"];
+        $post->image_name=$data["image_name"];
+        $post->save();
+        
+        $posts=Post::orderBy('id','DESC')->get();
+        return json_encode([
+            "success"=>true,  
+            "data"=>json_encode($posts),
+        ]);
+    }
+    catch(Exception $e)
+    {
+        return json_encode([
+            "success"=>false,
+            "error" =>$e,
+        ]);
+    }
+});
+
+Route::post("/add-comment",function(Request $request){
+    try{
+        $data=(array)json_decode($request->data);
+        $comment = new Comment();
+        $comment->account_id=$data["account_id"];
+        $comment->type_post=$data["type_post"];
+        $comment->post_id=$data["post_id"];
+        $comment->content=$data["content"];
+        $comment->time=$data["time"];
+        $comment->save();
+        
+        $comments=Comment::all();
+        return json_encode([
+            "success"=>true,  
+            "data"=>json_encode($comments),
+
+        ]);
+    }
+    catch(Exception $e)
+    {
+        return json_encode([
+            "success"=>false,
+            "error" =>$e,
+        ]);
+    }
     
-// });
-// Route::post("/add-comment",function(){
+});
 
-// });
-
-// Route::post("/post-status",function(){
-
-// });
+Route::post("/sign-up",function(Request $request){
+    try{
+        $data=(array)json_decode($request->data);
+        $account = new Account();
+        $account->username=$data["username"];
+        $account->password=$data["password"];
+        $account->name=$data["name"];
+        $account->birthday=$data["birthday"];
+        $account->email=$data["email"];
+        $account->avatar=$data["avatar"];
+        $account->background=$data["background"];
+        $account->save();
+        
+        return json_encode([
+            "success"=>true,  
+        ]);
+    }
+    catch(Exception $e)
+    {
+        return json_encode([
+            "success"=>false,
+            "error" =>$request->data,
+        ]);
+    }
+});
 

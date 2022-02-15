@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:vietnam_tourism_flutter/models/account.dart';
+import 'package:vietnam_tourism_flutter/models/comment.dart';
 import 'package:vietnam_tourism_flutter/models/post.dart';
 import 'package:vietnam_tourism_flutter/models/status.dart';
 
@@ -65,6 +66,26 @@ class API{
         "action":"post",
         "message":set,
       },
+    );
+  }
+
+  Future<http.Response> addComment(Comment comment) async {
+    return http.post(
+      Uri.parse(url),
+      body: <String, dynamic>{
+        "data": json.encode(comment.toJson()),
+        "action":"post",
+      }
+    );
+  }
+
+    Future<http.Response> postSignUp(Account account) async {
+    return http.post(
+      Uri.parse(url),
+      body: <String, dynamic>{
+        "data": json.encode(account.toJson()),
+        "action":"post",
+      }
     );
   }
   

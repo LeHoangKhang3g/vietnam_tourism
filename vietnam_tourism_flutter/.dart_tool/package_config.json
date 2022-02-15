@@ -170,6 +170,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///D:/Setup/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "js",
       "rootUri": "file:///D:/Setup/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.3",
       "packageUri": "lib/",
@@ -178,6 +184,12 @@
     {
       "name": "lints",
       "rootUri": "file:///D:/Setup/flutter/.pub-cache/hosted/pub.dartlang.org/lints-1.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "map_launcher",
+      "rootUri": "file:///D:/Setup/flutter/.pub-cache/hosted/pub.dartlang.org/map_launcher-2.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -374,7 +386,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2022-01-22T08:10:30.018620Z",
+  "generated": "2022-02-14T00:02:51.518636Z",
   "generator": "pub",
   "generatorVersion": "2.15.1"
 }
