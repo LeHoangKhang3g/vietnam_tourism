@@ -1,0 +1,3 @@
+1. Giao diện đầy đủ, nội dung nổi bật, tìm kiếm, tìm kiếm nổi bật, chi tiết địa danh, danh sách bài viết đã chia sẻ địa danh đó.
+2.
+3. Tính năng: hiển thị địa danh, bài viết, thông tin cá nhân.

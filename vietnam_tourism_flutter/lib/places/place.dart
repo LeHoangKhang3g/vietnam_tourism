@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:vietnam_tourism_flutter/api/api.dart';
 import 'package:vietnam_tourism_flutter/comments/comment.dart';
+import 'package:vietnam_tourism_flutter/login/login.dart';
 import 'package:vietnam_tourism_flutter/main.dart';
 import 'package:vietnam_tourism_flutter/models/comment.dart';
 import 'package:vietnam_tourism_flutter/models/place.dart';
@@ -11,7 +13,10 @@ import 'package:vietnam_tourism_flutter/models/account.dart';
 import 'package:vietnam_tourism_flutter/models/post.dart';
 import 'package:vietnam_tourism_flutter/models/status.dart';
 import 'package:map_launcher/map_launcher.dart';
+import 'package:vietnam_tourism_flutter/places/place_detail.dart';
+import 'package:vietnam_tourism_flutter/share/share_place.dart';
 import 'package:vietnam_tourism_flutter/time/time.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 class PlacePost extends StatefulWidget {
@@ -23,7 +28,7 @@ class PlacePost extends StatefulWidget {
 }
 
 class _PlacePostState extends State<PlacePost>{
-  late TextEditingController _controller;
+
   bool like=false;
   bool unlike=false;
   bool likeBeforeSave=false;
@@ -35,13 +40,12 @@ class _PlacePostState extends State<PlacePost>{
   bool isSave=false;
   bool visibleComment = false;
   Iterable<Comment> comments = [];
-  final _formKey = GlobalKey<FormState>();
+  String descriptionTitle="";
 
   @override
   void initState(){
     super.initState();
-    _controller=TextEditingController();
-
+    
     likes = MyApp.repository.lstStatus.where((element) => element.typePost=="place")
     .where((element) => element.postId==widget.place.id).where((element) => element.typeStatus=="like").toList().length;
     unlikes = MyApp.repository.lstStatus.where((element) => element.typePost=="place")
@@ -62,31 +66,51 @@ class _PlacePostState extends State<PlacePost>{
     });
     likeBeforeSave=like;
     unlikeBeforeSave=unlike;
+
+    descriptionTitle =  widget.place.description.length<=100?widget.place.description:widget.place.description.substring(0,100)+"...";
   }
 
   @override
   void dispose(){
-    _controller.dispose();
     super.dispose();
   }
   @override
   Widget build(BuildContext context){
+    void goToLogin(){
+      showDialog(context: context, builder: (BuildContext context)=>AlertDialog(
+        title: const Text("Đăng nhập"),
+        content: const Text("Đăng nhập để tiếp tục"),
+        actions: [
+          TextButton(onPressed: (){Navigator.pop(context);}, child: const Text("Lúc khác")),
+          TextButton(
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>const Login()));
+            }, 
+            child: const Text("Đăng nhập"),
+          )
+        ],
+      ));
+    }
+
+
+    
 
     comments=MyApp.repository.comments.where((element) => element.typePost=="place")
     .where((element) => element.postId==widget.place.id).toList();
 
     Widget buildComment(Comment comment) => !visibleComment ?Container() :  Container(
       padding: const EdgeInsets.all(5.0),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(1),
-            child: CircleAvatar(
-              foregroundImage: ExactAssetImage(
-              "images/avatars/"+MyApp.repository.accounts.where((element) => element.id == comment.accountId).first.avatar,
-              ),
-            )
+      child: ListTile(
+        leading: Container(
+          padding: const EdgeInsets.all(1),
+          child: CircleAvatar(
+            foregroundImage: ExactAssetImage(
+            "images/avatars/"+MyApp.repository.accounts.where((element) => element.id == comment.accountId).first.avatar,
+            ),
           ),
+        ),
+        title: Row(
+        children: [
           Container(
             margin: const EdgeInsets.only(right: 30),
             child: Column(
@@ -109,7 +133,7 @@ class _PlacePostState extends State<PlacePost>{
               ],
             ), 
           ),
-          SingleChildScrollView(
+          Flexible(
             child: Container(
               padding: const EdgeInsets.all(1),
               child: Text(
@@ -121,8 +145,23 @@ class _PlacePostState extends State<PlacePost>{
                 softWrap: true,
               ),
             ),
-          )
+          ),
         ],
+      ),
+      trailing: comment.accountId==MyApp.accountUsed.id? IconButton(icon: const Icon(Icons.delete),onPressed: (){
+        API(url: "http://127.0.0.1:8000/api/delete-comment").deleteComment(comment).then((value){
+          dynamic temp = json.decode(value.body);   
+          if(temp["success"])
+          {
+            MyApp.repository.comments=(json.decode(temp["data"])  as List<dynamic> ).map((e) => Comment.fromJson(e)).toList();
+          }
+          else
+          {
+            print(temp["error"]);
+          }
+          setState(() {});
+        });
+      },):Text(""),
       )
     );
     Future<void> goToXY(double x, double y, String title) async {
@@ -132,40 +171,11 @@ class _PlacePostState extends State<PlacePost>{
         title: title,
       );
     }
-    void share(){
-      API(url: "http://10.0.2.2:8000/api/add-post-share")
-      .postPostShare(Post(0, MyApp.accountUsed.id, widget.place.id, DateTime.now(), _controller.text, widget.place.imageName))
-      .then((value){
-        final temp=json.decode(value.body);
-        if(temp["success"]){
-          MyApp.repository.posts=(json.decode(temp["data"])  as List<dynamic> ).map((e) => Post.fromJson(e)).toList();
-          showDialog(
-            context: context, 
-            builder: (BuildContext context)=>AlertDialog(
-              title: const Text("Thông báo"),
-              content: const Text("Share thành công!"),
-              actions: [
-                TextButton(
-                  onPressed: (){
-                    Navigator.pop(context,"Cancel");        
-                    Navigator.pop(context);
-                  },
-                  child: const Text("Ok"),
-                ),
-              ],
-            ),
-          );
-        }
-        else{
-          print(temp["error"]);
-        }
-      });
-      setState(() {});
-    }
+    
     if(!isLoad&&!isSave){
       if(!MyApp.repository.statusIsUpdate){
         isLoad=true;
-        API(url: "http://10.0.2.2:8000/api/status")
+        API(url: "http://127.0.0.1:8000/api/status")
         .getDataString().then((value){
           final temp = json.decode(value);
           Iterable s = (temp as List<dynamic>).map((e) => Status.fromJson(e)).toList();
@@ -191,7 +201,7 @@ class _PlacePostState extends State<PlacePost>{
       if(likeBeforeSave!=like&&unlikeBeforeSave!=unlike){
         isSave=true;
         if(like){
-          API(url: "http://10.0.2.2:8000/api/change-status")
+          API(url: "http://127.0.0.1:8000/api/change-status")
           .postChangeStatus(Status(0,MyApp.accountUsed.id,"place",widget.place.id,"like"), "true").then((value){
             likeBeforeSave=like;
             unlikeBeforeSave=unlike;  
@@ -201,7 +211,7 @@ class _PlacePostState extends State<PlacePost>{
           });
         }
         else{
-          API(url: "http://10.0.2.2:8000/api/change-status")
+          API(url: "http://127.0.0.1:8000/api/change-status")
           .postChangeStatus(Status(0,MyApp.accountUsed.id,"place",widget.place.id,"unlike"), "true").then((value){
             likeBeforeSave=like;
             unlikeBeforeSave=unlike;  
@@ -214,7 +224,7 @@ class _PlacePostState extends State<PlacePost>{
       else if(likeBeforeSave!=like){
         isSave=true;
         if(like){
-          API(url: "http://10.0.2.2:8000/api/change-status")
+          API(url: "http://127.0.0.1:8000/api/change-status")
           .postChangeStatus(Status(0,MyApp.accountUsed.id,"place",widget.place.id,"like"), "true").then((value){
             likeBeforeSave=like;              
             MyApp.repository.statusIsUpdate=false;
@@ -223,7 +233,7 @@ class _PlacePostState extends State<PlacePost>{
           });
         }
         else{
-          API(url: "http://10.0.2.2:8000/api/change-status")
+          API(url: "http://127.0.0.1:8000/api/change-status")
           .postChangeStatus(status.where((element) => element.typeStatus=="like").first, "false").then((value){
             likeBeforeSave=like;
             MyApp.repository.statusIsUpdate=false;
@@ -234,7 +244,7 @@ class _PlacePostState extends State<PlacePost>{
       }
       else if(unlikeBeforeSave!=unlike){
         if(unlike){
-          API(url: "http://10.0.2.2:8000/api/change-status")
+          API(url: "http://127.0.0.1:8000/api/change-status")
           .postChangeStatus(Status(0,MyApp.accountUsed.id,"place",widget.place.id,"unlike"), "true").then((value){
             unlikeBeforeSave=unlike;             
             MyApp.repository.statusIsUpdate=false; 
@@ -243,7 +253,7 @@ class _PlacePostState extends State<PlacePost>{
           });
         }
         else{
-          API(url: "http://10.0.2.2:8000/api/change-status")
+          API(url: "http://127.0.0.1:8000/api/change-status")
           .postChangeStatus(status.where((element) => element.typeStatus=="unlike").first, "false").then((value){
             unlikeBeforeSave=unlike;
             MyApp.repository.statusIsUpdate=false;
@@ -255,192 +265,177 @@ class _PlacePostState extends State<PlacePost>{
     }
 
     return Container(
-      color: const Color.fromRGBO(255, 255, 255, 100),
-      padding: const EdgeInsets.all(5),
-      margin: const EdgeInsets.all(10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            padding: const EdgeInsets.all(1),
-            child: Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.fromLTRB(10 ,0 , 10 , 0),
-                  child:  Text(
-                    widget.place.name,
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.place.area,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                    Text(
-                      widget.place.region,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                  ],
-                ), 
-              ],
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(1),
-            child: Text( 
-              widget.place.description,
-              style: const TextStyle(
-                fontSize: 16,
-              ),
-            ),
-          ),
-          Image.asset(
-            "images/places/"+widget.place.imageName,
-            fit:BoxFit.cover,
-          ),
-          Row(
+      margin: const EdgeInsets.all(3),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5),
+          side:const BorderSide(
+            color: Color.fromRGBO(200, 200, 200, 1),
+            width: 1,
+          )
+        ),
+        shadowColor: Colors.black,
+        child: Container(       
+          color: Colors.white,
+          padding: const EdgeInsets.all(5),
+          margin: const EdgeInsets.all(5),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                onPressed: (){
-                  setState(() {
-                    if(like){
-                      like=false;
-                      likes--;
-                    }
-                    else{
-                      likes++;
-                      like=true;
-                      if(like==true&&unlike==true){
-                        unlikes--;
-                        unlike=false;
-                      }   
-                    }                              
-                  });
-                },
-                icon: Icon(
-                  Icons.thumb_up_alt,
-                  color: like?Colors.green:Colors.grey,
-                ),
-              ),
-              Text(likes.toString()),
-              IconButton(
-                onPressed: (){
-                  setState(() {
-                    if(unlike){
-                      unlikes--;
-                      unlike=false;
-                    }
-                    else{
-                      unlikes++;
-                      unlike=true;
-                      if(like==true&&unlike==true){
-                        likes--;
-                        like=false;
-                      }   
-                    }                                        
-                  });
-                },
-                icon: Icon(
-                  Icons.thumb_down_alt,
-                  color: unlike?Colors.green: Colors.grey,
-                ),
-              ),
-              Text(unlikes.toString()),
-              IconButton(
-                onPressed: (){
-                  visibleComment=!visibleComment;
-                  setState(() { });
-                },
-                icon: Icon(
-                  Icons.comment,
-                  color: comments.where((element) => element.accountId==MyApp.accountUsed.id).toList().isNotEmpty?Colors.green:Colors.grey,
-                ),
-              ),
-              IconButton(
-                onPressed: (){
-                  showDialog(
-                    context: context, 
-                    builder: (BuildContext context)=>AlertDialog(
-                      title: const Text("Chia sẻ bài viết"),
-                      content: SingleChildScrollView(
-                        child: Form(
-                          key: _formKey,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          child: Column(
-                            children: <Widget>[               
-                              Container(
-                                padding: const EdgeInsets.fromLTRB(2, 2, 2, 2),
-                                child: TextField(
-                                      controller: _controller,
-                                      decoration: const InputDecoration(
-                                        filled: true,
-                                        fillColor: Colors.white,
-                                        border: OutlineInputBorder(),
-                                        labelText: 'Nội dung chia sẻ',
-                                      ),
-                                  ),
-                              ),
-                              Image.asset(
-                                "images/places/"+widget.place.imageName,
-                                fit:BoxFit.cover,
-                              ),
-                            ],
+              Container(
+                padding: const EdgeInsets.all(1),
+                child: ListTile(
+                  leading:  Container(
+                      padding: const EdgeInsets.fromLTRB(10 ,0 , 10 , 0),
+                      child:  TextButton(
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>PlaceDetail(place: widget.place)));
+                        },
+                        child: Text(
+                          widget.place.name,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
-                      actions: [
-                        TextButton(
-                          onPressed: (){
-                            if (_formKey.currentState?.validate() ?? false) {
-                              share();
-                            }       
-                          },
-                          child: const Text("Ok"),
+                    ),
+                  title:  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.place.area,
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal,
+                          ),
                         ),
-                        TextButton(
-                          onPressed: (){
-                            Navigator.pop(context,"Cancel");        
-                          },
-                          child: const Text("Cancel"),
+                        Text(
+                          widget.place.region,
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal,
+                          ),
                         ),
                       ],
-                    ),
-                  );
-                },
-                icon: const Icon(
-                  Icons.share,
-                  color: Colors.grey,
+                    ), 
+                  
                 ),
               ),
-              IconButton(
-                onPressed: (){
-                  final place =MyApp.repository.places.where((place) => place.id==widget.place.id).first;
-                  goToXY(place.locationX,place.locationY,place.name);
-                },
-                icon: const Icon(
-                  Icons.location_pin,
-                  color: Colors.grey,
+              const Divider(thickness: 2, ),
+              Container(
+                padding: const EdgeInsets.all(1),
+                child: Text( 
+                  descriptionTitle,
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
                 ),
-              ), 
+              ),
+              Image.network(
+                widget.place.imageName,
+                fit:BoxFit.cover,
+              ),
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: (){
+                      if(MyApp.accountUsed.id==0){
+                        goToLogin();
+                        return;
+                      }
+                      setState(() {
+                        if(like){
+                          like=false;
+                          likes--;
+                        }
+                        else{
+                          likes++;
+                          like=true;
+                          if(like==true&&unlike==true){
+                            unlikes--;
+                            unlike=false;
+                          }   
+                        }                              
+                      });
+                    },
+                    icon: Icon(
+                      Icons.thumb_up_alt,
+                      color: like?Colors.green:Colors.grey,
+                    ),
+                  ),
+                  Text(likes.toString()),
+                  IconButton(
+                    onPressed: (){
+                      if(MyApp.accountUsed.id==0){
+                        goToLogin();
+                        return;
+                      }
+                      setState(() {
+                        if(unlike){
+                          unlikes--;
+                          unlike=false;
+                        }
+                        else{
+                          unlikes++;
+                          unlike=true;
+                          if(like==true&&unlike==true){
+                            likes--;
+                            like=false;
+                          }   
+                        }                                        
+                      });
+                    },
+                    icon: Icon(
+                      Icons.thumb_down_alt,
+                      color: unlike?Colors.red: Colors.grey,
+                    ),
+                  ),
+                  Text(unlikes.toString()),
+                  IconButton(
+                    onPressed: (){
+                      visibleComment=!visibleComment;
+                      setState(() { });
+                    },
+                    icon: Icon(
+                      Icons.comment,
+                      color: comments.where((element) => element.accountId==MyApp.accountUsed.id).toList().isNotEmpty?Colors.green:Colors.grey,
+                    ),
+                  ),
+                  Text(comments.length.toString()),
+                  IconButton(
+                    onPressed: (){
+                      if(MyApp.accountUsed.id==0){
+                        goToLogin();
+                        return;
+                      }
+                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>SharePlace(place: widget.place)));
+                    },
+                    icon: Icon(
+                      Icons.share,
+                      color: Colors.blue.shade700,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: (){
+                      final place =MyApp.repository.places.where((place) => place.id==widget.place.id).first;
+                      goToXY(place.locationX,place.locationY,place.name);
+                    },
+                    icon: Icon(
+                      Icons.location_pin,
+                      color: Colors.blue.shade700,
+                    ),
+                  ), 
+                ],
+              ),
+              !visibleComment?Container():CommentPage(typePost: "place",id: widget.place.id),
+              ...comments.map(buildComment).toList(),
             ],
           ),
-          !visibleComment?Container():CommentPage(typePost: "place",id: widget.place.id),
-          ...comments.map(buildComment).toList(),
-        ],
+          
+        ),
       ),
-      
     );
+    
   }
 }  

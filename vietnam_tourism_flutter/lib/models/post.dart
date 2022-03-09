@@ -1,4 +1,7 @@
 
+import 'dart:io';
+
+import 'package:vietnam_tourism_flutter/models/account.dart';
 import 'package:vietnam_tourism_flutter/models/comment.dart';
 import 'package:vietnam_tourism_flutter/models/status.dart';
 class Post{ 
@@ -8,6 +11,7 @@ class Post{
   DateTime time=DateTime.now();
   String content="";
   String imageName="";
+  File? imageFile;
 
   int likes=0;
   int unlikes=0;

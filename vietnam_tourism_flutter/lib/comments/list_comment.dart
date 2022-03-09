@@ -15,7 +15,7 @@ class _CommentScreenState extends State<CommentScreen>{
   @override
   Widget build(BuildContext context){
     if(!MyApp.repository.accountIsUpdate){
-      API(url: "http://10.0.2.2:8000/api/accounts")
+      API(url: "http://127.0.0.1:8000/api/accounts")
       .getDataString().then((value){
         final temp = json.decode(value);
         Iterable s = (temp as List<dynamic>).map((e) => Account.fromJson(e)).toList();

@@ -39,6 +39,9 @@ dependencies:
   cached_network_image: ^3.2.0
   map_launcher: ^2.2.0
   intl: ^0.17.0
+  image_picker: ^0.8.4+9
+  carousel_slider: ^4.0.0
+  bordered_text: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -69,10 +72,19 @@ flutter:
     - images/avatars/avatar3.jpg
     - images/avatars/avatar4.jpg
     - images/avatars/avatar5.jpg
+    - images/avatars/anonymous.jpg
     - images/backgrounds/background1.jpg
+    - images/backgrounds/background2.jpg
+    - images/backgrounds/background3.jpg
+    - images/backgrounds/background4.jpg
+    - images/backgrounds/background5.jpg
     - images/places/place1.jpg
     - images/places/place2.jpg
     - images/places/place3.jpg
+    - images/default/camera.jpg
+    - images/cooks/banh-beo.jpg
+    - images/cooks/banh-chung.jpg
+    - images/cooks/banh-beo.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

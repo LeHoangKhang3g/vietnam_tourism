@@ -7,6 +7,8 @@ use App\Models\Place;
 use App\Models\Post;
 use App\Models\Comment;
 use App\Models\Status;
+use App\Models\Cook;
+use App\Models\Stay;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,13 +37,23 @@ Route::get("/accounts",function(){
 });
 
 Route::get("/comments",function(){
-    $comments=Comment::all();
+    $comments=Comment::orderBy('id','DESC')->get();
     return json_encode($comments);
 });
 
 Route::get("/status",function(){
     $status=Status::all();
     return json_encode($status);
+});
+
+Route::get("/cooks",function(){
+    $cooks=Cook::all();
+    return json_encode($cooks);
+});
+
+Route::get("/stays",function(){
+    $stays=Stay::all();
+    return json_encode($stays);
 });
 
 Route::post("/sign-in",function(Request $request){
@@ -94,6 +106,7 @@ Route::post("/change-status",function(Request $request){
 
 Route::post("/add-post-share",function(Request $request){
     try{
+
         $data=(array)json_decode($request->data);
 
         $post = new Post();
@@ -101,7 +114,18 @@ Route::post("/add-post-share",function(Request $request){
         $post->place_id=$data["place_id"];
         $post->time=$data["time"];
         $post->content=$data["content"];
-        $post->image_name=$data["image_name"];
+        $post->image_name="";
+        $post->save();
+
+        $id = Post::max("id");
+        $post=Post::find($id);
+
+        $image = $request->file("picture");
+        $ex = $image->extension();
+        $imageName = "post".$id.".".$ex;
+        $storePath = $image->storeAs("images/posts",$imageName);
+
+        $post->image_name="http://127.0.0.1:8000/images/posts/".$imageName;
         $post->save();
         
         $posts=Post::orderBy('id','DESC')->get();
@@ -130,7 +154,31 @@ Route::post("/add-comment",function(Request $request){
         $comment->time=$data["time"];
         $comment->save();
         
-        $comments=Comment::all();
+        $comments=Comment::orderBy('id','DESC')->get();
+        return json_encode([
+            "success"=>true,  
+            "data"=>json_encode($comments),
+
+        ]);
+    }
+    catch(Exception $e)
+    {
+        return json_encode([
+            "success"=>false,
+            "error" =>$e,
+        ]);
+    }
+    
+});
+
+Route::post("/delete-comment",function(Request $request){
+    try{
+        $data=(array)json_decode($request->data);
+        
+        $comment=Comment::find($data["id"]);
+        $comment->delete();
+        
+        $comments=Comment::orderBy('id','DESC')->get();
         return json_encode([
             "success"=>true,  
             "data"=>json_encode($comments),
@@ -148,28 +196,47 @@ Route::post("/add-comment",function(Request $request){
 });
 
 Route::post("/sign-up",function(Request $request){
-    try{
+    //try{
         $data=(array)json_decode($request->data);
         $account = new Account();
         $account->username=$data["username"];
         $account->password=$data["password"];
         $account->name=$data["name"];
         $account->birthday=$data["birthday"];
+        $account->phone=$data["phone"];
         $account->email=$data["email"];
         $account->avatar=$data["avatar"];
         $account->background=$data["background"];
+        $account->save();
+
+        $id = Account::max("id");
+        $account = Account::find($id);
+
+
+        $image = $request->file("avatar");
+        $ex = $image->extension();
+        $imageName = "avatar".$id.".".$ex;
+        $storePath = $image->storeAs("images/avatars",$imageName);
+        $account->avatar="http://127.0.0.1:8000/images/avatars/".$imageName;
+        
+        $image = $request->file("background");
+        $ex = $image->extension();
+        $imageName = "background".$id.".".$ex;
+        $storePath = $image->storeAs("images/backgrounds",$imageName);
+        $account->background="http://127.0.0.1:8000/images/backgrounds/".$imageName;
+
         $account->save();
         
         return json_encode([
             "success"=>true,  
         ]);
-    }
-    catch(Exception $e)
-    {
-        return json_encode([
-            "success"=>false,
-            "error" =>$request->data,
-        ]);
-    }
+    //}
+    // catch(Exception $e)
+    // {
+    //     return json_encode([
+    //         "success"=>false,
+    //         "error" =>$request->data,
+    //     ]);
+    // }
 });
 

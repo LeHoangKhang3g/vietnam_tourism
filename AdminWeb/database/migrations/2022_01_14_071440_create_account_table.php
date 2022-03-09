@@ -19,6 +19,7 @@ class CreateAccountTable extends Migration
             $table->string("password");
             $table->string("name");
             $table->datetime("birthday");
+            $table->string("phone");
             $table->string("email");
             $table->string("avatar");
             $table->string("background");

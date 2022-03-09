@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:vietnam_tourism_flutter/models/account.dart';
@@ -43,14 +44,25 @@ class API{
     );
   }
 
-  Future<http.Response> postPostShare(Post post) async{
-    return http.post(
-      Uri.parse(url),
-      body: <String,dynamic>{
-        "data":json.encode(post.toJson()),
-        "action":"post",
-      },
-    );
+  Future<bool> postPostShare(Post post, File image) async{
+    // return http.post(
+    //   Uri.parse(url),
+    //   body: <String,dynamic>{
+    //     "data":json.encode(post.toJson()),
+    //     "action":"post",
+    //   },
+    // );
+    var request = http.MultipartRequest("POST",Uri.parse(url));
+    request.files.add(await http.MultipartFile.fromPath("picture", image.path));
+    request.fields.addAll(<String,String>{
+      "data":json.encode(post.toJson()),
+      "action":"post",
+    });
+    
+    var response =await request.send();
+    // String responseStr=await response.stream.bytesToString();
+    // print(responseStr);
+    return true;
   }
 
   Future<http.Response> postStatus(int accountId, String typePost, int postId, String typeStatus, bool set) async{
@@ -70,16 +82,53 @@ class API{
   }
 
   Future<http.Response> addComment(Comment comment) async {
-    return http.post(
+    http.Response response=await http.post(
       Uri.parse(url),
       body: <String, dynamic>{
         "data": json.encode(comment.toJson()),
         "action":"post",
       }
     );
+    //print(response.body);
+    return response; 
+  }
+  Future<http.Response> deleteComment(Comment comment) async {
+    http.Response response=await http.post(
+      Uri.parse(url),
+      body: <String, dynamic>{
+        "data": json.encode(comment.toJson()),
+        "action":"post",
+      }
+    );
+    //print(response.body);
+    return response; 
   }
 
-    Future<http.Response> postSignUp(Account account) async {
+  Future<bool> postSignUp(Account account, bool avatarChange, bool backgroundChange,File avatar, File background) async {
+    // return http.post(
+    //   Uri.parse(url),
+    //   body: <String, dynamic>{
+    //     "data": json.encode(account.toJson()),
+    //     "action":"post",
+    //   }
+    // );
+    var request = http.MultipartRequest("POST",Uri.parse(url));
+    avatarChange?request.files.add(await http.MultipartFile.fromPath("avatar", avatar.path)):0;
+    backgroundChange?request.files.add(await http.MultipartFile.fromPath("background", background.path)):0;
+    request.fields.addAll(<String,String>{
+      "data":json.encode(account.toJson()),
+      "avatarChange":avatarChange.toString(),
+      "backgroundChange":backgroundChange.toString(),
+      "action":"post",
+    });
+    
+    var response =await request.send();
+    // String responseStr=await response.stream.bytesToString();
+    // print(responseStr);
+    return true;
+  }
+
+  Future<http.Response> updateProfile(Account account) async {
     return http.post(
       Uri.parse(url),
       body: <String, dynamic>{
