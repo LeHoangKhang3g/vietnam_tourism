@@ -37,6 +37,8 @@ class ProfileState extends State<Profile>{
     //   width: widthScreen,
     //   height: 250,
     // );
+  
+
     Future<void> _pullRefresh() async {
       MyApp.repository.postIsUpdate=false;
       MyApp.repository.accountIsUpdate=false;
@@ -44,7 +46,7 @@ class ProfileState extends State<Profile>{
       MyApp.repository.commentIsUpdate=false;
       MyApp.repository.statusIsUpdate=false;
       if(!MyApp.repository.accountIsUpdate){
-        API(url: "http://10.0.2.2:8000/api/accounts")
+        API(url: "http://127.0.0.1:8000/api/accounts")
         .getDataString().then((value){
           final temp = json.decode(value);
           Iterable s = (temp as List<dynamic>).map((e) => Account.fromJson(e)).toList();
@@ -54,7 +56,7 @@ class ProfileState extends State<Profile>{
         });
       }
       if(!MyApp.repository.placeIsUpdate){
-        API(url: "http://10.0.2.2:8000/api/places")
+        API(url: "http://127.0.0.1:8000/api/places")
         .getDataString().then((value){
           final temp = json.decode(value);
           Iterable s = (temp as List<dynamic>).map((e) => Place.fromJson(e)).toList();
@@ -64,7 +66,7 @@ class ProfileState extends State<Profile>{
         });
       }
       if(!MyApp.repository.postIsUpdate){
-        API(url: "http://10.0.2.2:8000/api/posts")
+        API(url: "http://127.0.0.1:8000/api/posts")
         .getDataString().then((value){
           final temp = json.decode(value);
           Iterable s = (temp as List<dynamic>).map((e) => Post.fromJson(e)).toList();
@@ -74,7 +76,7 @@ class ProfileState extends State<Profile>{
         });
       }
       if(!MyApp.repository.commentIsUpdate){
-        API(url: "http://10.0.2.2:8000/api/comments")
+        API(url: "http://127.0.0.1:8000/api/comments")
         .getDataString().then((value){
           final temp = json.decode(value);
           Iterable s = (temp as List<dynamic>).map((e) => Comment.fromJson(e)).toList();
@@ -84,7 +86,7 @@ class ProfileState extends State<Profile>{
         });
       }
       if(!MyApp.repository.statusIsUpdate){
-        API(url: "http://10.0.2.2:8000/api/status")
+        API(url: "http://127.0.0.1:8000/api/status")
         .getDataString().then((value){
           final temp = json.decode(value);
           Iterable s = (temp as List<dynamic>).map((e) => Status.fromJson(e)).toList();
@@ -104,21 +106,26 @@ class ProfileState extends State<Profile>{
           children: [
             Stack(
               children: [
-                Image.asset(
-                  "images/backgrounds/"+MyApp.accountUsed.background,
-                  fit: BoxFit.cover,
-                  width: widthScreen,
-                  height: 250,
-                ),
+                // Image.asset(
+                //   "images/backgrounds/"+MyApp.accountUsed.background,
+                //   fit: BoxFit.cover,
+                //   width: widthScreen,
+                //   height: 250,
+                // ),
+                Image.network(MyApp.accountUsed.background),
                 Container(
                   margin: const EdgeInsets.only(top: 175),
                   height: 150,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:[
+                      // CircleAvatar(
+                      //   foregroundImage: ExactAssetImage("images/avatars/"+MyApp.accountUsed.avatar),
+                      //   maxRadius: 75,
+                      // ),
                       CircleAvatar(
-                        foregroundImage: ExactAssetImage("images/avatars/"+MyApp.accountUsed.avatar),
-                        maxRadius: 75,
+                        radius: 75,
+                        backgroundImage: NetworkImage(MyApp.accountUsed.avatar,scale: 1.0),
                       ),   
                     ],
                   )
@@ -141,18 +148,33 @@ class ProfileState extends State<Profile>{
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children:[
-                  Text(
-                    "Ngày sinh: "+MyApp.accountUsed.birthday.day.toString()+"/"+MyApp.accountUsed.birthday.month.toString()+"/"+MyApp.accountUsed.birthday.year.toString(),
-                    style: const TextStyle(
-                      fontSize: 18,
+                  ListTile(
+                    leading:const Icon(Icons.date_range),
+                    title: Text(
+                      "Ngày sinh: "+MyApp.accountUsed.birthday.day.toString()+"/"+MyApp.accountUsed.birthday.month.toString()+"/"+MyApp.accountUsed.birthday.year.toString(),
+                      style: const TextStyle(
+                        fontSize: 18,
+                      ),
                     ),
                   ),
-                  Text(
-                    "Email: "+MyApp.accountUsed.email,
-                    style: TextStyle(
-                      fontSize: 18,
+                  ListTile(
+                    leading: const Icon(Icons.email),
+                    title: Text(
+                      "Email: "+MyApp.accountUsed.email,
+                      style:const TextStyle(
+                        fontSize: 18,
+                      ),
                     ),
-                  )
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.phone),
+                    title: Text(
+                      "Số điện thoại: "+MyApp.accountUsed.phone,
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

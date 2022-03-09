@@ -1,8 +1,10 @@
 import 'package:vietnam_tourism_flutter/models/account.dart';
 import 'package:vietnam_tourism_flutter/models/comment.dart';
+import 'package:vietnam_tourism_flutter/models/cook.dart';
 import 'package:vietnam_tourism_flutter/models/place.dart';
 import 'package:vietnam_tourism_flutter/models/post.dart';
 import 'package:vietnam_tourism_flutter/models/status.dart';
+import 'package:vietnam_tourism_flutter/models/stay.dart';
 
 class Repository{
   Iterable<Post> posts = [
@@ -24,10 +26,14 @@ class Repository{
   ];
   Iterable<Comment> comments=[];
   Iterable<Status> lstStatus=[];
+  Iterable<Cook> cooks=[];
+  Iterable<Stay> stays=[];
   
   bool postIsUpdate=false;
   bool accountIsUpdate=false;
   bool placeIsUpdate=false;
   bool commentIsUpdate=false;
   bool statusIsUpdate=false;
+  bool cookIsUpdate=false;
+  bool stayIsUpdate=false;
 }

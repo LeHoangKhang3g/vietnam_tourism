@@ -7,12 +7,16 @@ INJECTED from D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\v
 MERGED from D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\android\app\src\main\AndroidManifest.xml:1:1-41:12
 MERGED from [:cloud_firestore] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:image_picker] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-19:12
+MERGED from [:flutter_plugin_android_lifecycle] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-25:12
 MERGED from [:sqflite] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider_android] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\c4aa2cd3498a410f91479770484260f1\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-analytics-ktx:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\5e24434a5cffb56dd38a51a637c686d5\jetified-firebase-analytics-ktx-20.0.0\AndroidManifest.xml:2:1-17:12
 MERGED from [com.google.firebase:firebase-common-ktx:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\c18c05664a1cb4c8dd0507a8fe816dfe\jetified-firebase-common-ktx-20.0.0\AndroidManifest.xml:2:1-21:12
+MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\7ba59a89711e7fc333da4302932febb2\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\f1195c55bb29746a0f4a442a99ad0adf\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
 MERGED from [com.google.firebase:firebase-analytics:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\86590dff2aeffdb5b91d4ad81f8502cc\jetified-firebase-analytics-20.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\d456c23c5ece04f640b6c09381d998c1\jetified-firebase-firestore-24.0.0\AndroidManifest.xml:2:1-26:12
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.0.0-beta02] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\ebf8edadd33e33a51859b6c187e43073\jetified-firebase-appcheck-interop-16.0.0-beta02\AndroidManifest.xml:15:1-26:12
@@ -20,6 +24,7 @@ MERGED from [com.google.firebase:firebase-auth-interop:19.0.2] C:\Users\Khang\.g
 MERGED from [com.google.android.gms:play-services-measurement-api:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\ccd8f0980dab1714f98ddded414430b2\jetified-play-services-measurement-api-20.0.0\AndroidManifest.xml:17:1-36:12
 MERGED from [com.google.firebase:firebase-installations:17.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\3a31ceb8e7450c955b23b804a9ac17d6\jetified-firebase-installations-17.0.0\AndroidManifest.xml:2:1-24:12
 MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\7d89ca10f1cdfdc7d7953b0cad752c89\jetified-firebase-common-20.0.0\AndroidManifest.xml:15:1-40:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\8891497ef61610674e49506d3b7e1491\exifinterface-1.3.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-components:17.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\dbf2e521d41c76676a22e67bc1b880e2\jetified-firebase-components-17.0.0\AndroidManifest.xml:15:1-23:12
 MERGED from [com.google.firebase:firebase-database-collection:18.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\046082010891c9a1fbc72dc27434c181\jetified-firebase-database-collection-18.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-base:17.1.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\028e2af049aff9ad02b583c22895ed29\jetified-play-services-base-17.1.0\AndroidManifest.xml:17:1-29:12
@@ -46,8 +51,8 @@ MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\Khang\.gradle\caches
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\2f73d0277a9ec27cc526e96bd7f3b2c7\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\d4f6461b333db0559601a51d43de8301\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\1f9c2cb07695e06e6ed23de90fa0170a\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\c5c3e54a49cb63a156067cc5396b53cb\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\8dd2f32afaf5b219854a155233201377\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\c5c3e54a49cb63a156067cc5396b53cb\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\a062089b88aaf6da3c34e8dc4754dbc4\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\7ade2a4be3e91f7e51e3a34817e2a398\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\9960116b889c771633b45c9e15493f35\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -78,10 +83,14 @@ MERGED from [:cloud_firestore] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\
 MERGED from [:cloud_firestore] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:image_picker] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
+MERGED from [:image_picker] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
 MERGED from [com.google.firebase:firebase-analytics-ktx:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\5e24434a5cffb56dd38a51a637c686d5\jetified-firebase-analytics-ktx-20.0.0\AndroidManifest.xml:7:5-15:19
 MERGED from [com.google.firebase:firebase-analytics-ktx:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\5e24434a5cffb56dd38a51a637c686d5\jetified-firebase-analytics-ktx-20.0.0\AndroidManifest.xml:7:5-15:19
 MERGED from [com.google.firebase:firebase-common-ktx:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\c18c05664a1cb4c8dd0507a8fe816dfe\jetified-firebase-common-ktx-20.0.0\AndroidManifest.xml:11:5-19:19
 MERGED from [com.google.firebase:firebase-common-ktx:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\c18c05664a1cb4c8dd0507a8fe816dfe\jetified-firebase-common-ktx-20.0.0\AndroidManifest.xml:11:5-19:19
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\f1195c55bb29746a0f4a442a99ad0adf\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\f1195c55bb29746a0f4a442a99ad0adf\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [com.google.firebase:firebase-analytics:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\86590dff2aeffdb5b91d4ad81f8502cc\jetified-firebase-analytics-20.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\86590dff2aeffdb5b91d4ad81f8502cc\jetified-firebase-analytics-20.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\d456c23c5ece04f640b6c09381d998c1\jetified-firebase-firestore-24.0.0\AndroidManifest.xml:16:5-24:19
@@ -176,6 +185,10 @@ MERGED from [:cloud_firestore] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\
 MERGED from [:cloud_firestore] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
@@ -188,6 +201,10 @@ MERGED from [com.google.firebase:firebase-analytics-ktx:20.0.0] C:\Users\Khang\.
 MERGED from [com.google.firebase:firebase-analytics-ktx:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\5e24434a5cffb56dd38a51a637c686d5\jetified-firebase-analytics-ktx-20.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-common-ktx:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\c18c05664a1cb4c8dd0507a8fe816dfe\jetified-firebase-common-ktx-20.0.0\AndroidManifest.xml:6:5-8:41
 MERGED from [com.google.firebase:firebase-common-ktx:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\c18c05664a1cb4c8dd0507a8fe816dfe\jetified-firebase-common-ktx-20.0.0\AndroidManifest.xml:6:5-8:41
+MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\7ba59a89711e7fc333da4302932febb2\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\7ba59a89711e7fc333da4302932febb2\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\f1195c55bb29746a0f4a442a99ad0adf\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\f1195c55bb29746a0f4a442a99ad0adf\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-analytics:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\86590dff2aeffdb5b91d4ad81f8502cc\jetified-firebase-analytics-20.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\86590dff2aeffdb5b91d4ad81f8502cc\jetified-firebase-analytics-20.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\d456c23c5ece04f640b6c09381d998c1\jetified-firebase-firestore-24.0.0\AndroidManifest.xml:7:5-9:41
@@ -202,6 +219,8 @@ MERGED from [com.google.firebase:firebase-installations:17.0.0] C:\Users\Khang\.
 MERGED from [com.google.firebase:firebase-installations:17.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\3a31ceb8e7450c955b23b804a9ac17d6\jetified-firebase-installations-17.0.0\AndroidManifest.xml:6:5-8:41
 MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\7d89ca10f1cdfdc7d7953b0cad752c89\jetified-firebase-common-20.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\7d89ca10f1cdfdc7d7953b0cad752c89\jetified-firebase-common-20.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\8891497ef61610674e49506d3b7e1491\exifinterface-1.3.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\8891497ef61610674e49506d3b7e1491\exifinterface-1.3.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-components:17.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\dbf2e521d41c76676a22e67bc1b880e2\jetified-firebase-components-17.0.0\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-components:17.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\dbf2e521d41c76676a22e67bc1b880e2\jetified-firebase-components-17.0.0\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-database-collection:18.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\046082010891c9a1fbc72dc27434c181\jetified-firebase-database-collection-18.0.0\AndroidManifest.xml:5:5-7:41
@@ -254,10 +273,10 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Khang\.g
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\d4f6461b333db0559601a51d43de8301\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\1f9c2cb07695e06e6ed23de90fa0170a\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\1f9c2cb07695e06e6ed23de90fa0170a\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\c5c3e54a49cb63a156067cc5396b53cb\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\c5c3e54a49cb63a156067cc5396b53cb\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\8dd2f32afaf5b219854a155233201377\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\8dd2f32afaf5b219854a155233201377\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\c5c3e54a49cb63a156067cc5396b53cb\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\c5c3e54a49cb63a156067cc5396b53cb\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\a062089b88aaf6da3c34e8dc4754dbc4\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\a062089b88aaf6da3c34e8dc4754dbc4\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\7ade2a4be3e91f7e51e3a34817e2a398\documentfile-1.0.0\AndroidManifest.xml:20:5-44
@@ -332,6 +351,22 @@ ADDED from [:firebase_core] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vie
 		ADDED from [:firebase_core] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_core] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-124
+provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
+ADDED from [:image_picker] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-16:20
+	android:grantUriPermissions
+		ADDED from [:image_picker] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-47
+	android:authorities
+		ADDED from [:image_picker] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-74
+	android:exported
+		ADDED from [:image_picker] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [:image_picker] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-82
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:image_picker] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:75
+	android:resource
+		ADDED from [:image_picker] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-72
+	android:name
+		ADDED from [:image_picker] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\image_picker\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
 queries
 ADDED from [:map_launcher] D:\Hoc_tap\Hoc_Tap_Nam_3_HK1\LapTrinhDiDong\DoAn\vietnam_tourism\vietnam_tourism_flutter\build\map_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-23:15
 package#com.google.android.apps.maps
@@ -406,6 +441,18 @@ ADDED from [com.google.firebase:firebase-common-ktx:20.0.0] C:\Users\Khang\.grad
 		ADDED from [com.google.firebase:firebase-common-ktx:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\c18c05664a1cb4c8dd0507a8fe816dfe\jetified-firebase-common-ktx-20.0.0\AndroidManifest.xml:17:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-common-ktx:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\c18c05664a1cb4c8dd0507a8fe816dfe\jetified-firebase-common-ktx-20.0.0\AndroidManifest.xml:16:17-113
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\f1195c55bb29746a0f4a442a99ad0adf\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\f1195c55bb29746a0f4a442a99ad0adf\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\f1195c55bb29746a0f4a442a99ad0adf\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\f1195c55bb29746a0f4a442a99ad0adf\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\f1195c55bb29746a0f4a442a99ad0adf\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\f1195c55bb29746a0f4a442a99ad0adf\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\d456c23c5ece04f640b6c09381d998c1\jetified-firebase-firestore-24.0.0\AndroidManifest.xml:13:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:20.0.0] C:\Users\Khang\.gradle\caches\transforms-2\files-2.1\ccd8f0980dab1714f98ddded414430b2\jetified-play-services-measurement-api-20.0.0\AndroidManifest.xml:23:5-79

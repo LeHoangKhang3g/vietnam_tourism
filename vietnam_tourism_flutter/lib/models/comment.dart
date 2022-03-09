@@ -35,6 +35,7 @@ Comment _commentFromJson(dynamic json){
 
 Map<String,dynamic> _commentToJson(Comment comment){
   return <String,dynamic>{
+    "id":comment.id,
     "account_id":comment.accountId,
     "type_post":comment.typePost,
     "post_id":comment.postId,
